@@ -28,4 +28,43 @@ Global
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {62D3390E-F511-4AFE-AE67-0530E82A8EA6}
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+		$0.TextStylePolicy = $2
+		$2.inheritsSet = null
+		$2.scope = application/xml
+		$0.XmlFormattingPolicy = $3
+		$3.scope = application/xml
+		$0.TextStylePolicy = $4
+		$4.FileWidth = 80
+		$4.TabsToSpaces = True
+		$4.scope = text/plain
+		$0.TextStylePolicy = $5
+		$5.inheritsSet = null
+		$5.scope = text/x-json
+		$0.TextStylePolicy = $6
+		$6.inheritsSet = null
+		$6.scope = text/x-vs
+		$0.TextStylePolicy = $7
+		$7.EolMarker = Unix
+		$7.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $8
+		$8.NewLinesForBracesInProperties = False
+		$8.NewLinesForBracesInAccessors = False
+		$8.NewLinesForBracesInAnonymousMethods = False
+		$8.NewLinesForBracesInControlBlocks = False
+		$8.NewLinesForBracesInAnonymousTypes = False
+		$8.NewLinesForBracesInObjectCollectionArrayInitializers = False
+		$8.NewLinesForBracesInLambdaExpressionBody = False
+		$8.NewLineForElse = False
+		$8.NewLineForCatch = False
+		$8.NewLineForFinally = False
+		$8.NewLineForMembersInObjectInit = False
+		$8.NewLineForMembersInAnonymousTypes = False
+		$8.NewLineForClausesInQuery = False
+		$8.scope = text/x-csharp
+		$0.StandardHeader = $9
+	EndGlobalSection
 EndGlobal
