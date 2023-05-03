@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>EternalFrost</id>
+    <version>1.0.0</version>
+    <authors>EternalFrost</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="MonoGame.Content.Builder.Task" version="3.8.1.303" exclude="Build,Analyzers" />
+        <dependency id="MonoGame.Extended" version="3.8.0" exclude="Build,Analyzers" />
+        <dependency id="MonoGame.Framework.DesktopGL" version="3.8.1.303" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <contentFiles>
+      <files include="any/net6.0/Content/bin/DesktopGL/Content/eternalfrost/tiles/Ice.xnb" buildAction="Content" />
+      <files include="any/net6.0/Content/bin/DesktopGL/Content/tiles/Ice.xnb" buildAction="Content" />
+    </contentFiles>
+  </metadata>
+  <files>
+    <file src="/Users/25kmaloney/Projects/EternalFrost/EternalFrost/bin/Debug/net6.0/EternalFrost.runtimeconfig.json" target="lib/net6.0/EternalFrost.runtimeconfig.json" />
+    <file src="/Users/25kmaloney/Projects/EternalFrost/EternalFrost/bin/Debug/net6.0/EternalFrost.dll" target="lib/net6.0/EternalFrost.dll" />
+    <file src="/Users/25kmaloney/Projects/EternalFrost/EternalFrost/Content/bin/DesktopGL/Content/eternalfrost/tiles/Ice.xnb" target="content/Content/bin/DesktopGL/Content/eternalfrost/tiles/Ice.xnb" />
+    <file src="/Users/25kmaloney/Projects/EternalFrost/EternalFrost/Content/bin/DesktopGL/Content/eternalfrost/tiles/Ice.xnb" target="contentFiles/any/net6.0/Content/bin/DesktopGL/Content/eternalfrost/tiles/Ice.xnb" />
+    <file src="/Users/25kmaloney/Projects/EternalFrost/EternalFrost/Content/bin/DesktopGL/Content/tiles/Ice.xnb" target="content/Content/bin/DesktopGL/Content/tiles/Ice.xnb" />
+    <file src="/Users/25kmaloney/Projects/EternalFrost/EternalFrost/Content/bin/DesktopGL/Content/tiles/Ice.xnb" target="contentFiles/any/net6.0/Content/bin/DesktopGL/Content/tiles/Ice.xnb" />
+  </files>
+</package>
