@@ -6,7 +6,7 @@ namespace EternalFrost.InGameTypes
 	public class WorldTile
 	{
 		public Tile tile { get; }
-		RegistryItem registryItem;
+		public RegistryItem registryItem { get; }
 		
 		public WorldTile(Tile tile)
 		{

@@ -112,3 +112,7 @@
 /Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Debug/net6.0/runtimes/win-x86/native/soft_oal.dll
 /Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Debug/net6.0/EternalFrost.dll
 /Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Debug/net6.0/EternalFrost.pdb
+/Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Debug/net6.0/Content/font/eternalfrost/font.xnb
+/Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Debug/net6.0/Content/texture/eternalfrost/tiles/ice.xnb
+/Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Debug/net6.0/Content/texture/eternalfrost/tiles/snow.xnb
+/Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Debug/net6.0/MonoGame.Extended.Particles.dll

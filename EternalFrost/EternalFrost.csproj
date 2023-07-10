@@ -10,10 +10,26 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
   <ItemGroup>
     <None Remove="Icon.ico" />
     <None Remove="Icon.bmp" />
     <None Remove="Utils\Collections\" />
+    <None Remove="Managers\" />
+    <None Remove="Input\" />
+    <None Remove="Typs\" />
+    <None Remove="Content\texture\" />
+    <None Remove="Content\texture\eternalfrost\" />
+    <None Remove="Utils\Renderers\" />
+    <None Remove="Utils\TileMap\Generation\" />
+    <None Remove="Utils\TileMap\Generation\Generators\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
@@ -23,9 +39,18 @@
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" />
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
     <PackageReference Include="MonoGame.Extended" Version="3.8.0" />
+    <PackageReference Include="MonoGame.Extended.Particles" Version="3.8.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utils\Collections\" />
+    <Folder Include="Managers\" />
+    <Folder Include="Input\" />
+    <Folder Include="Types\" />
+    <Folder Include="Content\texture\" />
+    <Folder Include="Content\texture\eternalfrost\" />
+    <Folder Include="Utils\Renderers\" />
+    <Folder Include="Utils\TileMap\Generation\" />
+    <Folder Include="Utils\TileMap\Generation\Generators\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />

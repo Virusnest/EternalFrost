@@ -31,6 +31,10 @@ namespace EternalFrost.Registry
 		{
 			return $"{Location.ToString()}/{Value.ID}";
 		}
+		public string getLocation()
+		{
+			return $"{Location.getLocation()}/{Value.ID}";
+		}
 	}
 }
 

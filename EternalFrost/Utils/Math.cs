@@ -1,26 +1,21 @@
 ﻿using System;
+using System.Xml;
 using Microsoft.Xna.Framework;
 namespace EternalFrost.Utils
 {
     public class Math
     {
-        public static Vector2 CalcAspectScale(float width, float height, int aspectw, int aspecth)
+        public static Rectangle CalcAspectScale(Rectangle port, int aspectw, int aspecth)
         {
-            Vector2 size = new Vector2();
-            if (width/aspectw>height/aspecth)
-            {
-                size.Y = height;
-                size.X = (height * aspectw) / aspecth;
-            }
-            else
-            {
-                size.X = width;
-                size.Y = (width * aspecth) / aspectw;
-            }
-            return size;
-        }
+            var scale = MathF.Min((float)port.Width / aspectw, (float)port.Height / aspecth);
+            int nh = (int)(aspecth * scale);
+            int nw = (int)(aspectw * scale);
+			int x = (port.Width - nw) / 2;
+            int y = (port.Height - nh) / 2;
+            return new Rectangle(x, y, nw, nh);
+		}
 
-        public static int CalcFps(int delta) {
+		public static int CalcFps(int delta) {
             int fps;
             fps = 1000 / delta;
             return fps;

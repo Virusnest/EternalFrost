@@ -1,5 +1,3 @@
-/Users/25kmaloney/Projects/EternalFrost/EternalFrost/bin/Debug/net6.0/Content/tiles/Ice.xnb
-/Users/25kmaloney/Projects/EternalFrost/EternalFrost/bin/Debug/net6.0/Content/eternalfrost/tiles/Ice.xnb
 /Users/25kmaloney/Projects/EternalFrost/EternalFrost/bin/Debug/net6.0/EternalFrost
 /Users/25kmaloney/Projects/EternalFrost/EternalFrost/bin/Debug/net6.0/EternalFrost.deps.json
 /Users/25kmaloney/Projects/EternalFrost/EternalFrost/bin/Debug/net6.0/EternalFrost.runtimeconfig.json
@@ -27,3 +25,7 @@
 /Users/25kmaloney/Projects/EternalFrost/EternalFrost/obj/Debug/net6.0/EternalFrost.pdb
 /Users/25kmaloney/Projects/EternalFrost/EternalFrost/obj/Debug/net6.0/EternalFrost.genruntimeconfig.cache
 /Users/25kmaloney/Projects/EternalFrost/EternalFrost/obj/Debug/net6.0/ref/EternalFrost.dll
+/Users/25kmaloney/Projects/EternalFrost/EternalFrost/bin/Debug/net6.0/MonoGame.Extended.Particles.dll
+/Users/25kmaloney/Projects/EternalFrost/EternalFrost/bin/Debug/net6.0/Content/texture/eternalfrost/tiles/ice.xnb
+/Users/25kmaloney/Projects/EternalFrost/EternalFrost/bin/Debug/net6.0/Content/texture/eternalfrost/tiles/snow.xnb
+/Users/25kmaloney/Projects/EternalFrost/EternalFrost/bin/Debug/net6.0/Content/font/eternalfrost/font.xnb

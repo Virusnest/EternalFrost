@@ -83,6 +83,18 @@
           }
         }
       },
+      "MonoGame.Extended.Particles/3.8.0": {
+        "type": "package",
+        "dependencies": {
+          "MonoGame.Extended": "3.8.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/MonoGame.Extended.Particles.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MonoGame.Extended.Particles.dll": {}
+        }
+      },
       "MonoGame.Framework.DesktopGL/3.8.1.303": {
         "type": "package",
         "compile": {
@@ -195,6 +207,18 @@
         "monogame.extended.nuspec"
       ]
     },
+    "MonoGame.Extended.Particles/3.8.0": {
+      "sha512": "n0dCPPa+96rf/+ohqbKFv+wEjcz1g5xHAQpmS9jveisVSrvzyA2uP0av9DqNCXKarjCXACah5eqh0nO1SiwoOg==",
+      "type": "package",
+      "path": "monogame.extended.particles/3.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/MonoGame.Extended.Particles.dll",
+        "monogame.extended.particles.3.8.0.nupkg.sha512",
+        "monogame.extended.particles.nuspec"
+      ]
+    },
     "MonoGame.Framework.DesktopGL/3.8.1.303": {
       "sha512": "eGYhqn0n1olk8MNYeE9EuBmoNNECN1T18rPMaQpkzsEQ0H3nVyFPXC+uCo78v5pi5juQpJ3PSFnSkjzZJ1U58A==",
       "type": "package",
@@ -253,6 +277,7 @@
     "net6.0": [
       "MonoGame.Content.Builder.Task >= 3.8.1.303",
       "MonoGame.Extended >= 3.8.0",
+      "MonoGame.Extended.Particles >= 3.8.0",
       "MonoGame.Framework.DesktopGL >= 3.8.1.303"
     ]
   },
@@ -301,6 +326,10 @@
             "target": "Package",
             "version": "[3.8.0, )"
           },
+          "MonoGame.Extended.Particles": {
+            "target": "Package",
+            "version": "[3.8.0, )"
+          },
           "MonoGame.Framework.DesktopGL": {
             "target": "Package",
             "version": "[3.8.1.303, )"
@@ -322,7 +351,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.203/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.408/RuntimeIdentifierGraph.json"
       }
     }
   }

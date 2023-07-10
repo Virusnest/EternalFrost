@@ -3,26 +3,27 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using EternalFrost.Utils.Collections;
 using System.Collections.ObjectModel;
-
+using System.Collections;
 
 namespace EternalFrost.Registry
 {
-	public class Registry<T> 
+	public class Registry<T>
 	{
-		private Dictionary<RegistryItem, T> registry = new Dictionary<RegistryItem, T>();
+		private Dictionary<RegistryItem, T> ItemToValue = new Dictionary<RegistryItem, T>() { };
 		public ResourceLocation ID { get; }
 		private Dictionary<T, RegistryItem> ValueToItem = new Dictionary<T, RegistryItem>(new IdentityEqualityComparer<T>());
+
 		
 		public T Register(ResourceLocation name, T item)
 		{
-			registry.Add(new RegistryItem(ID,name),item);
+			ItemToValue.Add(new RegistryItem(ID,name),item);
 			ValueToItem.Add(item, new RegistryItem(ID, name));
 			Console.WriteLine(new RegistryItem(ID, name).ToString());
 			return item;
 		}
 		public T GetValue(ResourceLocation location)
 		{
-			return registry[new RegistryItem(ID,location)];
+			return ItemToValue[new RegistryItem(ID,location)];
 		}
 			
 		public RegistryItem GetKey(T item)
@@ -32,18 +33,26 @@ namespace EternalFrost.Registry
 
 		public bool Contains(ResourceLocation location)
 		{
-			return registry.ContainsKey(new RegistryItem(ID,location));
+			return ItemToValue.ContainsKey(new RegistryItem(ID,location));
 		}
 		public bool Contains(T value)
 		{
-			return registry.ContainsValue(value);
+			return ItemToValue.ContainsValue(value);
 		}
 		public Registry(ResourceLocation ID) {
 			this.ID = ID;	 
 		}
-		public void Remove()
+		public Dictionary<RegistryItem,T>.ValueCollection Values()
 		{
-
+			return ItemToValue.Values;
+		}
+		public Dictionary<RegistryItem, T>.KeyCollection Keys()
+		{
+			return ItemToValue.Keys;
+		}
+		public int GetLength()
+		{
+			return ItemToValue.Count;
 		}
 	}
 }

@@ -5,18 +5,13 @@ using Microsoft.Xna.Framework;
 
 namespace EternalFrost;
 
-public class Player : Entity
+public class Player
 {
 	private float speed;
-
-	public Player(Texture2D texture, Vector2 position, float speed) : base(texture, position)
-	{
-		this.speed = speed;
-	}
+ 
 
 	public void Move(Vector2 direction)
 	{
-		position += direction * speed;
 	}
 }
 

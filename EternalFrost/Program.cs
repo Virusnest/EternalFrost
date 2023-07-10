@@ -1,3 +1,3 @@
 ﻿
-using var game = new EternalFrost.Game1();
+using var game = new EternalFrost.EternalFrost();
 game.Run();

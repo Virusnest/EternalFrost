@@ -37,6 +37,10 @@ namespace EternalFrost.Registry
 			ResourceLocation other = (ResourceLocation)obj;
 			return (other.Namespace == Namespace)&& (other.ID == ID);
 		}
+		public string getLocation()
+		{
+			return $"{Namespace}/{ID}";
+		}
 
 	}
 }
