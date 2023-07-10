@@ -4,13 +4,11 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using EternalFrost.Utils.TileMap.Tiles;
 using EternalFrost.Utils.TileMap;
-using MonoGame.Extended.TextureAtlases;
 using MonoGame.Extended;
 using MonoGame.Extended.ViewportAdapters;
 using EternalFrost.Utils;
-using System.Collections.Generic;
-using EternalFrost.Utils.TileMap.Generation.Generators;
 using EternalFrost.Managers;
+using EternalFrost.Types;
 
 namespace EternalFrost;
 
@@ -21,8 +19,8 @@ public class EternalFrost : Game
 	private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private RenderTarget2D _lowResTarget;
-    private int _ResWidth = 16*16;
-    private int _ResHeight = 9*16;
+    private int _ResWidth = 16*16*4;
+    private int _ResHeight = 9*16*4;
     Texture2D TILE_ATLAS_TEXTURE;
 	public static SpriteFont font;
 	ScalingViewportAdapter viewport;
@@ -89,18 +87,21 @@ public class EternalFrost : Game
             Exit();
 
 		if (Mouse.GetState().LeftButton == ButtonState.Pressed) {
+			var pos = camera.ScreenToWorld(Mouse.GetState().Position.ToVector2());
+			manager.world.SetTile(new BlockPos((int)MathF.Floor(pos.X / 16), (int)MathF.Floor(pos.Y / 16), 1), null);
 		}
 		if (Mouse.GetState().RightButton == ButtonState.Pressed) {
-			//world.SetTile((int)MathF.Floor(pos.X / 16), (int)MathF.Floor(pos.Y / 16), new InGameTypes.WorldTile(Tiles.SNOW));
+			var pos = camera.ScreenToWorld(Mouse.GetState().Position.ToVector2());
+			manager.world.SetTile(new BlockPos((int)MathF.Floor(pos.X / 16), (int)MathF.Floor(pos.Y / 16),1), new InGameTypes.WorldTile(Tiles.ICE));
 		}
 		if (Keyboard.GetState().IsKeyDown(Keys.Left))
-			camera.Move(new Vector2(-0.5f, 0));
+			camera.Move(new Vector2(-5f, 0));
 		if (Keyboard.GetState().IsKeyDown(Keys.Right))
-			camera.Move(new Vector2(0.5f, 0));
+			camera.Move(new Vector2(5f, 0));
 		if (Keyboard.GetState().IsKeyDown(Keys.Up))
-			camera.Move(new Vector2(0, -0.5f));
+			camera.Move(new Vector2(0, -5f));
 		if (Keyboard.GetState().IsKeyDown(Keys.Down))
-			camera.Move(new Vector2(0,0.5f));
+			camera.Move(new Vector2(0,5f));
 	
 			// Additional logic for handling resize if necessary
 		

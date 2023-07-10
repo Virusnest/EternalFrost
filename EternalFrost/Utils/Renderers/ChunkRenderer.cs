@@ -22,8 +22,8 @@ namespace EternalFrost.Utils.TileMap
 			}
 			var rect =Chunk.GetBoundingBox();
 			rect.Offset(chunk.pos.X*TILESIZE*Chunk.WIDTH, chunk.pos.Y* TILESIZE * Chunk.HEIGHT);
-			batch.DrawRectangle(rect,Color.Red);
-			batch.DrawString(EternalFrost.font,chunk.pos.X+" "+chunk.pos.Y,rect.TopLeft,Color.Black);
+			//batch.DrawRectangle(rect,Color.Red);
+			//batch.DrawString(EternalFrost.font,chunk.pos.X+" "+chunk.pos.Y,rect.TopLeft,Color.Black);
 			batch.End();
 		}
 	}

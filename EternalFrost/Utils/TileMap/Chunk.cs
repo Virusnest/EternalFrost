@@ -10,8 +10,8 @@ namespace EternalFrost.Utils.TileMap
 	{
 		public Point pos;
 		public KeyedCollection<Guid, Entity.Entity> entities;
-		public const int WIDTH=4;
-		public const int HEIGHT=4;
+		public const int WIDTH=16;
+		public const int HEIGHT=16;
 		public const int DEPTH=3;
 		public WorldTile[,,] tiles { get; set; }
 		public bool isDirty = false;

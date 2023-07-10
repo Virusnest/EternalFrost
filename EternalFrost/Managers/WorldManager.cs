@@ -19,7 +19,7 @@ namespace EternalFrost.Managers
 		public WorldManager()
 		{
 			world = new World();
-			generator = new ChunkGenerator(new FillGenerator(new WorldTile(Tiles.ICE)));
+			generator = new ChunkGenerator(new SinGenerator(new WorldTile(Tiles.SNOW)));
 			renderer = new WorldRenderer();
 		}
 
@@ -27,13 +27,11 @@ namespace EternalFrost.Managers
 		{
 			var BL = Vector2.Round(((Vector2)camera.BoundingRectangle.BottomLeft)/ChunkRenderer.TILESIZE / Chunk.WIDTH);
 			var TR = Vector2.Round(((Vector2)camera.BoundingRectangle.TopRight)/ ChunkRenderer.TILESIZE / Chunk.WIDTH);
-			//Console.WriteLine($"{BL},{TR}");
 
 			for (int x = (int)BL.X-1; x < (int)TR.X+1; x++) {
 				for (int y = (int)TR.Y-1; y < (int)BL.Y+1; y++) {
 					var pos = new System.Drawing.Point(x, y);
 					if (!world.chunks.ContainsKey(pos)) {
-						Console.WriteLine(pos.ToString());
 						world.chunks.Add(new Chunk(pos));
 					}
 				}
