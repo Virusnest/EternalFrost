@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  android-build-check:
+  windows-build-check:
     runs-on: windows-latest
 
     steps:
