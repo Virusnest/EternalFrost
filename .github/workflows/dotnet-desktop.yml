@@ -23,7 +23,7 @@ jobs:
       - name: Test
         run: dotnet test --no-restore --verbosity normal
       - name: Package
-        run: dotnet publish --configuration Release --runtime wine-x86 --output ./publish --self-contained false
+        run: dotnet publish --configuration Release --runtime win-x64 --output ./publish --self-contained false
       - uses: actions/upload-artifact@v3
         with:
           name: my-artifact
