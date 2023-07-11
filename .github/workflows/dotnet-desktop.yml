@@ -21,7 +21,7 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release
       - name: Package
-        run: dotnet publish --configuration Release --runtime win-x64 --output ./publish --self-contained false
+        run: dotnet publish --configuration Release --runtime win-x64 --output ./publish
       - uses: actions/upload-artifact@v3
         with:
           name: Build Artifact
