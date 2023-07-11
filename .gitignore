@@ -17,20 +17,20 @@
 mono_crash.*
 
 # Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
-[Ww][Ii][Nn]32/
-[Aa][Rr][Mm]/
-[Aa][Rr][Mm]64/
-bld/
-[Bb]in/
-[Oo]bj/
-[Ll]og/
-[Ll]ogs/
+EternalFrost/[Dd]ebug/
+EternalFrost/[Dd]ebugPublic/
+EternalFrost/[Rr]elease/
+EternalFrost/[Rr]eleases/
+EternalFrost/x64/
+EternalFrost/x86/
+EternalFrost/[Ww][Ii][Nn]32/
+EternalFrost/[Aa][Rr][Mm]/
+EternalFrost/[Aa][Rr][Mm]64/
+EternalFrost/bld/
+EternalFrost/[Bb]in/
+EternalFrost/[Oo]bj/
+EternalFrost/[Ll]og/
+EternalFrost/[Ll]ogs/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -41,8 +41,8 @@ bld/
 Generated\ Files/
 
 # MSTest test Results
-[Tt]est[Rr]esult*/
-[Bb]uild[Ll]og.*
+EternalFrost/[Tt]est[Rr]esult*/
+EternalFrost/[Bb]uild[Ll]og.*
 
 # NUnit
 *.VisualState.xml
@@ -60,7 +60,7 @@ BenchmarkDotNet.Artifacts/
 # .NET
 project.lock.json
 project.fragment.lock.json
-artifacts/
+EternalFrost/artifacts/
 
 # Tye
 .tye/
