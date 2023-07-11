@@ -1,9 +1,6 @@
 /Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Debug/net6.0/CoverletSourceRootsMapping
 /Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Debug/net6.0/EternalFrost.deps.json
 /Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Debug/net6.0/EternalFrost.runtimeconfig.json
-/Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Debug/net6.0/Content/font/eternalfrost/font.xnb
-/Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Debug/net6.0/Content/texture/eternalfrost/tiles/ice.xnb
-/Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Debug/net6.0/Content/texture/eternalfrost/tiles/snow.xnb
 /Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Debug/net6.0/EternalFrost
 /Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Debug/net6.0/Microsoft.TestPlatform.PlatformAbstractions.dll
 /Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Debug/net6.0/NUnit3.TestAdapter.dll

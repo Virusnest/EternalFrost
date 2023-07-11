@@ -1,5 +1,6 @@
 ﻿using System;
 using EternalFrost.InGameTypes;
+using EternalFrost.Types;
 using EternalFrost.Utils.TileMap;
 using EternalFrost.Utils.TileMap.Generation;
 using EternalFrost.Utils.TileMap.Generation.Generators;
@@ -30,7 +31,7 @@ namespace EternalFrost.Managers
 
 			for (int x = (int)BL.X-1; x < (int)TR.X+1; x++) {
 				for (int y = (int)TR.Y-1; y < (int)BL.Y+1; y++) {
-					var pos = new System.Drawing.Point(x, y);
+					var pos = new ChunkPos(x, y);
 					if (!world.chunks.ContainsKey(pos)) {
 						world.chunks.Add(new Chunk(pos));
 					}

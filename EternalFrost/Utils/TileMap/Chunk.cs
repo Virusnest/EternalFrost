@@ -8,7 +8,7 @@ namespace EternalFrost.Utils.TileMap
 {
 	public class Chunk
 	{
-		public Point pos;
+		public ChunkPos pos;
 		public KeyedCollection<Guid, Entity.Entity> entities;
 		public const int WIDTH=16;
 		public const int HEIGHT=16;
@@ -17,7 +17,7 @@ namespace EternalFrost.Utils.TileMap
 		public bool isDirty = false;
 
 
-		public Chunk(Point pos)
+		public Chunk(ChunkPos pos)
 		{
 			this.pos = pos;
 			tiles = new WorldTile[WIDTH,HEIGHT,DEPTH];

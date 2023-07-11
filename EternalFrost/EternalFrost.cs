@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using EternalFrost.Utils.TileMap.Tiles;
-using EternalFrost.Utils.TileMap;
 using MonoGame.Extended;
 using MonoGame.Extended.ViewportAdapters;
 using EternalFrost.Utils;
@@ -21,12 +20,10 @@ public class EternalFrost : Game
     private RenderTarget2D _lowResTarget;
     private int _ResWidth = 16*16*4;
     private int _ResHeight = 9*16*4;
-    Texture2D TILE_ATLAS_TEXTURE;
 	public static SpriteFont font;
 	ScalingViewportAdapter viewport;
 	public static TileAtlas tileAtlas;
 	OrthographicCamera camera;
-	ChunkRenderer renderer;
 	WorldManager manager = new WorldManager();
 	public EternalFrost()
     {
@@ -48,7 +45,6 @@ public class EternalFrost : Game
         viewport = new BoxingViewport(Window,GraphicsDevice, _ResWidth, _ResHeight);
         camera = new OrthographicCamera(viewport);
 		camera.Position = new Vector2(-1,-1);
-		renderer = new ChunkRenderer();
         //tileAtlas = TextureAtlas.Create("tiles", TILE_ATLAS_TEXTURE, 16, 16);
         tileAtlas = new TileAtlas(GraphicsDevice, 16, 16, 256);
 		Console.Write(Tiles.ICE);
