@@ -18,7 +18,7 @@ namespace EternalFrost.Utils.TileMap
 		{
 			ChunkPos chunkPos = new ChunkPos((int)MathF.Floor((float)pos.X / Chunk.WIDTH), (int)MathF.Floor((float)pos.Y / Chunk.HEIGHT));
 			BlockPos blockPos = pos.ToChunkLocal();
-			Console.WriteLine($"{chunkPos}, {blockPos}");
+			//Console.WriteLine($"{chunkPos}, {blockPos}");
 			if (chunks.ContainsKey(chunkPos)) {
 				chunks[chunkPos].SetTile(blockPos, tile);
 			}
