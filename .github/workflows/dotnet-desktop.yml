@@ -1,26 +1,24 @@
-name: Run checks on incoming PR
+name: dotnet package
 
-on:
-  pull_request:
-    branches: [master, release, develop]
-
-  # allow running this workflow manually
-  workflow_dispatch:
+on: [push]
 
 jobs:
-  windows-build-check:
-    runs-on: windows-latest
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: [ '6.0.x' ]
 
     steps:
-      - name: Check out the repo
-        uses: actions/checkout@v2
-
-      - name: Build android project
-        uses: igotinfected-ci/build-monogame@v2
+      - uses: actions/checkout@v3
+      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v3
         with:
-          solution-path: '${{ github.workspace }}\EternalFrost.sln'
-          content-mgcb-path: '${{ github.workspace }}\ProjEternalFrostect\EternalFrost\Content'
-          content-mgcb-platform: "Windows"
-          csproj-path: '${{ github.workspace }}\EternalFrost\EternalFrost.csproj'
-          build-target: "PackageForWindows"
-          build-configuration: "Release"
+          dotnet-version: ${{ matrix.dotnet-version }}
+      - name: Install dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+      - name: Test
+        run: dotnet test --no-restore --verbosity normal
