@@ -18,6 +18,8 @@ jobs:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Install dependencies
         run: dotnet restore
+      - name: Clear Cache
+        run: dotnet nuget locals all --clear
       - name: Publish
         run: dotnet publish --configuration Release --runtime win-x64 --output ./publish --no-self-contained --no-dependencies
       - uses: actions/upload-artifact@v3
