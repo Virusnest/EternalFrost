@@ -8,7 +8,7 @@ namespace EternalFrost.Utils.TileMap
 {
 	public class ChunkRenderer
 	{
-		public static int TILESIZE = 16;
+		public static int TILESIZE = 8;
 		public void DrawLayer(SpriteBatch batch,Matrix viewMatrix, Chunk chunk,int layer)
 		{
 			batch.Begin(transformMatrix: viewMatrix,samplerState: SamplerState.PointClamp) ;

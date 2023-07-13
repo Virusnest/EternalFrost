@@ -20,7 +20,7 @@ namespace EternalFrost.Managers
 		public WorldManager()
 		{
 			world = new World();
-			generator = new ChunkGenerator(new SinGenerator(new WorldTile(Tiles.SNOW)));
+			generator = new ChunkGenerator(new SinGenerator(new WorldTile(Tiles.ICE)));
 			renderer = new WorldRenderer();
 		}
 

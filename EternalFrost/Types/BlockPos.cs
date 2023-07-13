@@ -43,8 +43,11 @@ namespace EternalFrost.Types
 			}
 			
 			return blockPos;
-
 		}
+		public ChunkPos ToChunkPos() {
+			return new ChunkPos();
+		}
+
 	}
 }
 

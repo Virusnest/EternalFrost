@@ -21,7 +21,7 @@ namespace EternalFrost.Utils.TileMap
 		{
 			this.pos = pos;
 			tiles = new WorldTile[WIDTH,HEIGHT,DEPTH];
-			entities = new KeyedCollection<Guid, Entity.Entity>(e => e.guid);
+			entities = new KeyedCollection<Guid, Entity.Entity>(e => e.Guid);
 
 		}
 		public WorldTile GetTile(int x, int y,int z) {

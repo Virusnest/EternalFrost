@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>/Users/25kmaloney/Projects/EternalFrost/EternalFrost/Content/texture/eternalfrost/tiles/ice.png</SourceFile>
-  <SourceTime>2023-05-04T09:09:21.4954693+10:00</SourceTime>
+  <SourceTime>2023-07-12T17:50:29.4556362+10:00</SourceTime>
   <DestFile>/Users/25kmaloney/Projects/EternalFrost/EternalFrost/Content/bin/DesktopGL/Content/texture/eternalfrost/tiles/ice.xnb</DestFile>
-  <DestTime>2023-05-22T18:16:16.3676577+10:00</DestTime>
+  <DestTime>2023-07-12T17:53:07.1969481+10:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T21:44:56+10:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
