@@ -7,9 +7,9 @@ namespace EternalFrost.Utils.ClassExtentions
 {
 	public static class Vector2Extentions
 	{
-		public static BlockPos ToBlockPos(this Vector2 vec,int z)
+		public static TilePos ToTilePos(this Vector2 vec,int z)
 		{
-			return new BlockPos((int)MathF.Floor(vec.X/Chunk.WIDTH/ChunkRenderer.TILESIZE), (int)MathF.Floor(vec.Y / Chunk.HEIGHT / ChunkRenderer.TILESIZE), z);
+			return new TilePos((int)MathF.Floor(vec.X/Chunk.WIDTH/ChunkRenderer.TILESIZE), (int)MathF.Floor(vec.Y / Chunk.HEIGHT / ChunkRenderer.TILESIZE), z);
 		}
 	}
 }

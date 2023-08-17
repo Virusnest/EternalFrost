@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Xml.Linq;
 using EternalFrost.Utils.TileMap;
 using Microsoft.Xna.Framework;
 
 namespace EternalFrost.Types
 {
-	public struct BlockPos : IEquatable<BlockPos>
+	public struct TilePos : IEquatable<TilePos>
 	{
-		public BlockPos(int x, int y, int z)
+		public TilePos(int x, int y, int z)
 		{
 			X = x;
 			Y = y;
@@ -15,12 +14,12 @@ namespace EternalFrost.Types
 		}
 		public int X, Y, Z;
 		public override string ToString() => $"({X}, {Y}, {Z})";
-		public BlockPos Zero()
+		public TilePos Zero()
 		{
-			return new BlockPos(0, 0, 0);
+			return new TilePos(0, 0, 0);
 		}
 
-		public bool Equals(BlockPos other)
+		public bool Equals(TilePos other)
 		{
 			return (X == other.X) && (Y == other.Y) && (Z == other.Z);
 		}
@@ -31,18 +30,18 @@ namespace EternalFrost.Types
 		public Vector2 ToWorldVec() {
 			return new Vector2(X*ChunkRenderer.TILESIZE, Y * ChunkRenderer.TILESIZE);
 		}
-		public BlockPos ToChunkLocal()
+		public TilePos ToChunkLocal()
 		{
-			BlockPos blockPos = new BlockPos(X % Chunk.WIDTH, Y % Chunk.HEIGHT, Z);
+			TilePos tilePos = new TilePos(X % Chunk.WIDTH, Y % Chunk.HEIGHT, Z);
 			
-			if (blockPos.X < 0) {
-				blockPos.X += Chunk.WIDTH;
+			if (tilePos.X < 0) {
+				tilePos.X += Chunk.WIDTH;
 			}
-			if (blockPos.Y < 0) {
-				blockPos.Y += Chunk.HEIGHT;
+			if (tilePos.Y < 0) {
+				tilePos.Y += Chunk.HEIGHT;
 			}
 			
-			return blockPos;
+			return tilePos;
 		}
 		public ChunkPos ToChunkPos() {
 			return new ChunkPos();

@@ -56,8 +56,8 @@ namespace EternalFrost.Utils.Entitys
 		}
 		public void UpdateCollision(World world)
 		{
-			for (int x= (int)Position.X-(int)CollisionBox.Width/ChunkRenderer.TILESIZE; x > Position.ToBlockPos(1).X+ (int)CollisionBox.Width / ChunkRenderer.TILESIZE; x++){
-				for (int y = (int)Position.Y - (int)CollisionBox.Height / ChunkRenderer.TILESIZE; y > Position.ToBlockPos(1).Y+ (int)CollisionBox.Height / ChunkRenderer.TILESIZE; x++) {
+			for (int x= (int)Position.X-(int)CollisionBox.Width/ChunkRenderer.TILESIZE; x > Position.ToTilePos(1).X+ (int)CollisionBox.Width / ChunkRenderer.TILESIZE; x++){
+				for (int y = (int)Position.Y - (int)CollisionBox.Height / ChunkRenderer.TILESIZE; y > Position.ToTilePos(1).Y+ (int)CollisionBox.Height / ChunkRenderer.TILESIZE; x++) {
 					if(world.GetTile(x, y, 1) == null) {
 						
 					}

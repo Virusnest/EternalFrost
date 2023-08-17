@@ -93,12 +93,12 @@ public class EternalFrost : Game
     if (Mouse.GetState().LeftButton == ButtonState.Pressed)
     {
       var pos = camera.ScreenToWorld(Mouse.GetState().Position.ToVector2());
-      manager.world.SetTile(new BlockPos((int)MathF.Floor(pos.X / ChunkRenderer.TILESIZE), (int)MathF.Floor(pos.Y / ChunkRenderer.TILESIZE), 1), null);
+      manager.world.SetTile(new TilePos((int)MathF.Floor(pos.X / ChunkRenderer.TILESIZE), (int)MathF.Floor(pos.Y / ChunkRenderer.TILESIZE), 1), null);
     }
     if (Mouse.GetState().RightButton == ButtonState.Pressed)
     {
       var pos = camera.ScreenToWorld(Mouse.GetState().Position.ToVector2());
-      manager.world.SetTile(new BlockPos((int)MathF.Floor(pos.X / ChunkRenderer.TILESIZE), (int)MathF.Floor(pos.Y / ChunkRenderer.TILESIZE), 1), new InGameTypes.WorldTile(Tiles.SNOWY_ICE));
+      manager.world.SetTile(new TilePos((int)MathF.Floor(pos.X / ChunkRenderer.TILESIZE), (int)MathF.Floor(pos.Y / ChunkRenderer.TILESIZE), 1), new InGameTypes.WorldTile(Tiles.SNOWY_ICE));
     }
     if (Keyboard.GetState().IsKeyDown(Keys.Left))
       camera.Move(new Vector2(-5, 0));

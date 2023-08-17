@@ -30,9 +30,9 @@ namespace EternalFrost.Types
 		{
 			return new Vector2(X * ChunkRenderer.TILESIZE*Chunk.WIDTH, Y * ChunkRenderer.TILESIZE * Chunk.HEIGHT);
 		}
-		public BlockPos ToBlockPos(int layer)
+		public TilePos ToTilePos(int layer)
 		{
-			return new BlockPos(X * Chunk.WIDTH, Y * Chunk.WIDTH, layer);
+			return new TilePos(X * Chunk.WIDTH, Y * Chunk.WIDTH, layer);
 		}
 	}
 }

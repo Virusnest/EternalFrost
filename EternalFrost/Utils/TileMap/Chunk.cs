@@ -28,7 +28,7 @@ namespace EternalFrost.Utils.TileMap
 		public WorldTile GetTile(int x, int y,int z) {
 			return tiles[x,y,z];
 		}
-		public WorldTile GetTile(BlockPos pos)
+		public WorldTile GetTile(TilePos pos)
 		{
 			return tiles[pos.X, pos.Y, pos.Z];
 		}
@@ -42,7 +42,7 @@ namespace EternalFrost.Utils.TileMap
 		{
 			SetTile(pos.X, pos.Y, z, tile);
 		}
-		public void SetTile(BlockPos pos, WorldTile tile)
+		public void SetTile(TilePos pos, WorldTile tile)
 		{
 			SetTile(pos.X, pos.Y, pos.Z, tile);
 		}

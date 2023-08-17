@@ -14,10 +14,10 @@ namespace EternalFrost.Utils.TileMap
 		{
 			chunks = new KeyedCollection<ChunkPos, Chunk>(c => c.pos);
 		}
-		public void SetTile(BlockPos pos, WorldTile tile)
+		public void SetTile(TilePos pos, WorldTile tile)
 		{
 			ChunkPos chunkPos = new ChunkPos((int)MathF.Floor((float)pos.X / Chunk.WIDTH), (int)MathF.Floor((float)pos.Y / Chunk.HEIGHT));
-			BlockPos blockPos = pos.ToChunkLocal();
+			TilePos blockPos = pos.ToChunkLocal();
 			//Console.WriteLine($"{chunkPos}, {blockPos}");
 			if (chunks.ContainsKey(chunkPos)) {
 				chunks[chunkPos].SetTile(blockPos, tile);
@@ -25,20 +25,20 @@ namespace EternalFrost.Utils.TileMap
 		}
 		public void SetTile(Point pos, int z, WorldTile tile)
 		{
-			SetTile(new BlockPos(pos.X, pos.Y, z), tile);
+			SetTile(new TilePos(pos.X, pos.Y, z), tile);
 		}
-		public WorldTile GetTile(BlockPos pos)
+		public WorldTile GetTile(TilePos pos)
 		{
 			return chunks[pos.ToChunkPos()].GetTile(pos.ToChunkLocal());
 		}
 		public WorldTile GetTile(int x,int y,int z)
 		{
-			var pos = new BlockPos(x,y,z);
+			var pos = new TilePos(x,y,z);
 			return chunks[pos.ToChunkPos()].GetTile(pos.ToChunkLocal());
 		}
 		public void SetTile(int x, int y, int z, WorldTile tile)
 		{
-			SetTile(new BlockPos(x, y, z), tile);
+			SetTile(new TilePos(x, y, z), tile);
 		}
 	}
 }
