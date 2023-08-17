@@ -30,6 +30,8 @@
     <None Remove="Utils\Renderers\" />
     <None Remove="Utils\TileMap\Generation\" />
     <None Remove="Utils\TileMap\Generation\Generators\" />
+    <None Remove="Utils\Renderers\EntityDrawers\" />
+    <None Remove="Utils\ClassExtentions\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
@@ -51,6 +53,8 @@
     <Folder Include="Utils\Renderers\" />
     <Folder Include="Utils\TileMap\Generation\" />
     <Folder Include="Utils\TileMap\Generation\Generators\" />
+    <Folder Include="Utils\Renderers\EntityDrawers\" />
+    <Folder Include="Utils\ClassExtentions\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>/Users/25kmaloney/Projects/EternalFrost/EternalFrost/Content/font/eternalfrost/font.spritefont</SourceFile>
-  <SourceTime>2023-07-11T18:20:02.131831+10:00</SourceTime>
+  <SourceTime>2023-08-02T17:50:43.1537934+10:00</SourceTime>
   <DestFile>/Users/25kmaloney/Projects/EternalFrost/EternalFrost/Content/bin/DesktopGL/Content/font/eternalfrost/font.xnb</DestFile>
-  <DestTime>2023-07-12T17:53:07.1306046+10:00</DestTime>
+  <DestTime>2023-08-02T18:32:08.3449897+10:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2022-07-26T21:44:56+10:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

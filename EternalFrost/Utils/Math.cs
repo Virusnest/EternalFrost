@@ -17,8 +17,9 @@ namespace EternalFrost.Utils
 
 		public static int CalcFps(int delta) {
             int fps;
-            fps = 1000 / delta;
-            return fps;
+			fps = 1000 / delta;
+
+			return fps;
         }
     }
 }

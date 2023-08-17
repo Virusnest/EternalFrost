@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using EternalFrost.InGameTypes;
 using MonoGame.Extended;
+using EternalFrost.Utils.Entitys;
 
 namespace EternalFrost.Utils.TileMap
 {
@@ -21,6 +22,18 @@ namespace EternalFrost.Utils.TileMap
 				chunkRenderer.DrawLayer(spriteBatch, viewMatrix, chunk, 1);
 			}
 			//TODO: Implement Entity Rendering
+			spriteBatch.Begin(transformMatrix: viewMatrix, samplerState: SamplerState.PointClamp);
+			foreach (var chunk in world.chunks) {
+				foreach(var entity in chunk.entities) {
+					if (entity is RenderingEntity) {
+						var tmp = entity as RenderingEntity;
+						if (tmp.Visible) {
+							tmp.Render(spriteBatch);
+						}
+					}
+				}
+			}
+			spriteBatch.End();
 			foreach (var chunk in world.chunks) {
 				chunkRenderer.DrawLayer(spriteBatch, viewMatrix, chunk, 2);
 			}

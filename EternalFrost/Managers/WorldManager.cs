@@ -1,6 +1,7 @@
 ﻿using System;
 using EternalFrost.InGameTypes;
 using EternalFrost.Types;
+using EternalFrost.Utils.Entitys;
 using EternalFrost.Utils.TileMap;
 using EternalFrost.Utils.TileMap.Generation;
 using EternalFrost.Utils.TileMap.Generation.Generators;
@@ -22,9 +23,10 @@ namespace EternalFrost.Managers
 			world = new World();
 			generator = new ChunkGenerator(new SinGenerator(new WorldTile(Tiles.ICE)));
 			renderer = new WorldRenderer();
+
 		}
 
-		public void Update(OrthographicCamera camera)
+		public void Update(OrthographicCamera camera,GameTime time)
 		{
 			var BL = Vector2.Round(((Vector2)camera.BoundingRectangle.BottomLeft)/ChunkRenderer.TILESIZE / Chunk.WIDTH);
 			var TR = Vector2.Round(((Vector2)camera.BoundingRectangle.TopRight)/ ChunkRenderer.TILESIZE / Chunk.WIDTH);
@@ -42,6 +44,12 @@ namespace EternalFrost.Managers
 			foreach (Chunk chunk in world.chunks) {
 				if (!chunk.isDirty) {
 					generator.GenerateChunk(chunk);
+				}
+				foreach(Entity entity in chunk.entities) {
+					entity.Update(time);
+					if(entity is PhysicalEntity) {
+						(entity as PhysicalEntity).UpdateMovement(world);
+					}
 				}
 				var boundpos = new Vector2(chunk.pos.X * ChunkRenderer.TILESIZE * Chunk.WIDTH, chunk.pos.Y * ChunkRenderer.TILESIZE * Chunk.HEIGHT);
 				if (!bounds.Contains(new Rectangle(boundpos.ToPoint(),new Point((int)Chunk.GetBoundingBox().Width, (int)Chunk.GetBoundingBox().Height)))) {

@@ -3,13 +3,15 @@ using MonoGame.Extended.Collections;
 using EternalFrost.InGameTypes;
 using EternalFrost.Types;
 using System.Drawing;
+using EternalFrost.Utils.Entitys;
+using System.Numerics;
 
 namespace EternalFrost.Utils.TileMap
 {
 	public class Chunk
 	{
 		public ChunkPos pos;
-		public KeyedCollection<Guid, Entity.Entity> entities;
+		public KeyedCollection<Guid, Entitys.Entity> entities;
 		public const int WIDTH=16;
 		public const int HEIGHT=16;
 		public const int DEPTH=3;
@@ -21,11 +23,14 @@ namespace EternalFrost.Utils.TileMap
 		{
 			this.pos = pos;
 			tiles = new WorldTile[WIDTH,HEIGHT,DEPTH];
-			entities = new KeyedCollection<Guid, Entity.Entity>(e => e.Guid);
-
+			entities = new KeyedCollection<Guid, Entitys.Entity>(e => e.Guid);
 		}
 		public WorldTile GetTile(int x, int y,int z) {
 			return tiles[x,y,z];
+		}
+		public WorldTile GetTile(BlockPos pos)
+		{
+			return tiles[pos.X, pos.Y, pos.Z];
 		}
 
 		public void SetTile(int x, int y,int z, WorldTile tile)

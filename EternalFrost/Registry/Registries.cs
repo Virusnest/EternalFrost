@@ -1,6 +1,6 @@
 ﻿using System;
 using EternalFrost.Utils.TileMap;
-using EternalFrost.Utils.Entity;
+using EternalFrost.Utils.Entitys;
 using EternalFrost.Input;
 
 namespace EternalFrost.Registry

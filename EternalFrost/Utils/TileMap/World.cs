@@ -27,6 +27,15 @@ namespace EternalFrost.Utils.TileMap
 		{
 			SetTile(new BlockPos(pos.X, pos.Y, z), tile);
 		}
+		public WorldTile GetTile(BlockPos pos)
+		{
+			return chunks[pos.ToChunkPos()].GetTile(pos.ToChunkLocal());
+		}
+		public WorldTile GetTile(int x,int y,int z)
+		{
+			var pos = new BlockPos(x,y,z);
+			return chunks[pos.ToChunkPos()].GetTile(pos.ToChunkLocal());
+		}
 		public void SetTile(int x, int y, int z, WorldTile tile)
 		{
 			SetTile(new BlockPos(x, y, z), tile);
