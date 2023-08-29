@@ -43,6 +43,10 @@ namespace EternalFrost.Types
 			
 			return tilePos;
 		}
+		public TilePos ToGlobalPos(ChunkPos pos)
+		{
+			return new TilePos(X+(pos.X*Chunk.WIDTH),Y+(pos.Y*Chunk.HEIGHT),Z);
+		}
 		public ChunkPos ToChunkPos() {
 			return new ChunkPos();
 		}

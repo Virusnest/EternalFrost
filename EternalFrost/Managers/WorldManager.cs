@@ -1,5 +1,4 @@
-﻿using System;
-using EternalFrost.InGameTypes;
+﻿using EternalFrost.InGameTypes;
 using EternalFrost.Types;
 using EternalFrost.Utils.Entitys;
 using EternalFrost.Utils.TileMap;
@@ -18,14 +17,13 @@ namespace EternalFrost.Managers
 		ChunkGenerator generator;
 		public WorldRenderer renderer;
 		
+		
 		public WorldManager()
 		{
 			world = new World();
 			generator = new ChunkGenerator(new SinGenerator(new WorldTile(Tiles.ICE)));
 			renderer = new WorldRenderer();
-
 		}
-
 		public void Update(OrthographicCamera camera,GameTime time)
 		{
 			var BL = Vector2.Round(((Vector2)camera.BoundingRectangle.BottomLeft)/ChunkRenderer.TILESIZE / Chunk.WIDTH);
@@ -61,6 +59,7 @@ namespace EternalFrost.Managers
 		{
 			renderer.Render(spriteBatch, viewMatrix, world);
 		}
+		
 	}
 }
 

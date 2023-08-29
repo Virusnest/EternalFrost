@@ -1,5 +1,6 @@
 ﻿using System;
 using EternalFrost.InGameTypes;
+using EternalFrost.Types;
 
 namespace EternalFrost.Utils.TileMap.Generation.Generators
 {
@@ -11,14 +12,9 @@ namespace EternalFrost.Utils.TileMap.Generation.Generators
 			this.tile = tile;
 		}
 
-		public override void Generate(Chunk chunk)
+		public override WorldTile GetTile(TilePos pos)
 		{
-			Console.WriteLine("Generating "+chunk.pos);
-			for (int x = 0; x < Chunk.WIDTH; x++) {
-				for (int y = 0; y < Chunk.HEIGHT; y++) {
-					chunk.SetTile(x, y, 1, tile);
-				}
-			}
+			return tile;
 		}
 	}
 }

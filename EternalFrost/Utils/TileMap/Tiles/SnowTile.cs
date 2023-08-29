@@ -4,7 +4,7 @@ namespace EternalFrost.Utils.TileMap.Tiles
 {
 	public class SnowTile : Tile
 	{
-		public SnowTile()
+		public SnowTile(TileProperties properties) : base(properties)
 		{
 		}
 	}

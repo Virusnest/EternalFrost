@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using EternalFrost.Utils.Collections;
-using System.Collections.ObjectModel;
-using System.Collections;
-
 namespace EternalFrost.Registry
 {
+	/// <summary>
+	/// Class <c>Registry</c>: A Dictionary Like object that stores Objects of a type <c>T</c> and a <c>ResourceLocation</c> Key.
+	/// </summary>
 	public class Registry<T>
 	{
 		private Dictionary<RegistryItem, T> ItemToValue = new Dictionary<RegistryItem, T>() { };

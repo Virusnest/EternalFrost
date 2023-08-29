@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended;
 using System.Reflection.Emit;
+using EternalFrost.Types;
+using EternalFrost.Utils.ClassExtentions;
 
 namespace EternalFrost.Utils.TileMap
 {
@@ -14,9 +16,9 @@ namespace EternalFrost.Utils.TileMap
 			batch.Begin(transformMatrix: viewMatrix,samplerState: SamplerState.PointClamp) ;
 			for (int x = 0; x < Chunk.WIDTH; x++) {
 				for (int y = 0; y < Chunk.HEIGHT; y++) {
-					Point pos = new Point(x*TILESIZE, y*TILESIZE) + new Point(chunk.pos.X*TILESIZE*Chunk.WIDTH,chunk.pos.Y*TILESIZE*Chunk.HEIGHT);
+					var pos = new TilePos(x, y, layer).ToGlobalPos(chunk.pos);
 					if (chunk.GetTile(x, y,layer) != null) {
-						batch.Draw(EternalFrost.tileAtlas.getTexture(), pos.ToVector2(), EternalFrost.tileAtlas.textures[chunk.GetTile(x,y,layer).registryItem.getLocation()],Color.White);
+						batch.Draw(EternalFrost.tileAtlas.getTexture(), pos.ToWorldVec()+new Vector2(4,4), EternalFrost.tileAtlas.textures[chunk.GetTile(x,y,layer).registryItem.getLocation()],Color.White,MathHelper.ToRadians(pos.ToWorldVec().GetHashCode()%90*90),new Vector2(4,4),Vector2.One,SpriteEffects.None,1);
 					}
 				}  
 			}

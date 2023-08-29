@@ -1,4 +1,6 @@
 ﻿using System;
+using EternalFrost.InGameTypes;
+
 namespace EternalFrost.Utils.TileMap.Generation
 {
 	public class ChunkGenerator
@@ -10,7 +12,9 @@ namespace EternalFrost.Utils.TileMap.Generation
 		}
 		public void GenerateChunk(Chunk chunk)
 		{
-			generator.Generate(chunk);
+			for(int i=0; i < chunk.tiles.Length; i++) {
+				chunk.tiles[i]=generator.GetTile(chunk.to3D(i).ToGlobalPos(chunk.pos));
+			}
 			chunk.isDirty = true;
 		}
 	}

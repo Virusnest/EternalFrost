@@ -19,39 +19,42 @@ public class EternalFrost : Game
   private GraphicsDeviceManager _graphics;
   private SpriteBatch _spriteBatch;
   private RenderTarget2D _lowResTarget;
-  private int _ResWidth = 16 * 10 * 2;
-  private int _ResHeight = 9 * 10 * 2;
+  private int _ResWidth = 16 * 10 * 5;
+  private int _ResHeight = 9 * 10 * 5;
   public static SpriteFont font;
-  ScalingViewportAdapter viewport;
+  BoxingViewportAdapter viewport;
   public static TileAtlas tileAtlas;
   OrthographicCamera camera;
+  public OrthographicCamera mouseCam;
+   
   WorldManager manager = new WorldManager();
+
   public EternalFrost()
   {
     _graphics = new GraphicsDeviceManager(this)
     {
+      PreferMultiSampling=true,
       PreferredBackBufferHeight = 800,
       SynchronizeWithVerticalRetrace = false,
       PreferredBackBufferWidth = 900
     };
     Content.RootDirectory = "Content";
-
     IsMouseVisible = true;
   }
 
   protected override void Initialize()
   {
     // TODO: Add your initialization logic here
-    var noise = new FastNoiseLite(DateTime.Now.Millisecond);
-    noise.SetNoiseType(FastNoiseLite.NoiseType.Perlin);
+    this.IsFixedTimeStep = false;
     base.Initialize();
     Window.AllowUserResizing = true;
-
     Console.WriteLine("INIT");
     _lowResTarget = new RenderTarget2D(GraphicsDevice, _ResWidth, _ResHeight);
-    viewport = new BoxingViewport(Window, GraphicsDevice, _ResWidth, _ResHeight);
-    camera = new OrthographicCamera(viewport);
+    viewport = new BoxingViewportAdapter(Window,GraphicsDevice, _ResWidth, _ResHeight);
+		mouseCam = new OrthographicCamera(viewport);
+		camera = new OrthographicCamera(viewport);
     camera.Position = new Vector2(0, 0);
+    _graphics.SynchronizeWithVerticalRetrace = false;
     //tileAtlas = TextureAtlas.Create("tiles", TILE_ATLAS_TEXTURE, 16, 16);
     tileAtlas = new TileAtlas(GraphicsDevice, 8, 8, 256);
     Console.Write(Tiles.ICE);
@@ -72,7 +75,6 @@ public class EternalFrost : Game
   protected override void UnloadContent()
   {
     base.UnloadContent();
-
   }
 
   protected override void LoadContent()
@@ -87,17 +89,18 @@ public class EternalFrost : Game
 
   protected override void Update(GameTime gameTime)
   {
-    if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+    mouseCam.Position = camera.Position;
+		if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
       Exit();
 
     if (Mouse.GetState().LeftButton == ButtonState.Pressed)
     {
-      var pos = camera.ScreenToWorld(Mouse.GetState().Position.ToVector2());
+      var pos = mouseCam.ScreenToWorld(Mouse.GetState().Position.ToVector2());
       manager.world.SetTile(new TilePos((int)MathF.Floor(pos.X / ChunkRenderer.TILESIZE), (int)MathF.Floor(pos.Y / ChunkRenderer.TILESIZE), 1), null);
     }
     if (Mouse.GetState().RightButton == ButtonState.Pressed)
     {
-      var pos = camera.ScreenToWorld(Mouse.GetState().Position.ToVector2());
+      var pos = mouseCam.ScreenToWorld(Mouse.GetState().Position.ToVector2());
       manager.world.SetTile(new TilePos((int)MathF.Floor(pos.X / ChunkRenderer.TILESIZE), (int)MathF.Floor(pos.Y / ChunkRenderer.TILESIZE), 1), new InGameTypes.WorldTile(Tiles.SNOWY_ICE));
     }
     if (Keyboard.GetState().IsKeyDown(Keys.Left))
@@ -113,22 +116,21 @@ public class EternalFrost : Game
 
 		//camera.Position = new Vector2(0.1f * (float)gameTime.TotalGameTime.Seconds);
 		// TODO: Add your update logic here
-	manager.Update(camera, gameTime);
-	base.Update(gameTime);
-  }
+	  manager.Update(camera, gameTime);
+  	base.Update(gameTime);
 
-  protected override void Draw(GameTime gameTime)
+	}
+
+	protected override void Draw(GameTime gameTime)
   {
 
     GraphicsDevice.SetRenderTarget(_lowResTarget);
     GraphicsDevice.Clear(Color.CornflowerBlue);
-    _spriteBatch.Begin(transformMatrix: camera.GetViewMatrix(), samplerState: SamplerState.PointClamp, sortMode: SpriteSortMode.Immediate);
-    _spriteBatch.End();
     manager.Render(_spriteBatch, camera.GetViewMatrix());
     DrawToMainBuffer();
     base.Draw(gameTime);
     _spriteBatch.Begin();
-    _spriteBatch.DrawString(font, Utils.Math.CalcFps(gameTime.ElapsedGameTime.Milliseconds).ToString(), Vector2.Zero, Color.White);
+    _spriteBatch.DrawString(font, gameTime.ElapsedGameTime.Milliseconds.ToString(), Vector2.Zero, Color.White);
     _spriteBatch.End();
     // TODO: Add your drawing code here
 
@@ -142,7 +144,6 @@ public class EternalFrost : Game
     _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
     _spriteBatch.Draw(_lowResTarget, size, Color.White);
     _spriteBatch.End();
-
   }
 
 }

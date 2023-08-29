@@ -4,7 +4,7 @@ namespace EternalFrost.Utils.TileMap.Tiles
 {
 	public class GroundTile : Tile
 	{
-		public GroundTile()
+		public GroundTile(TileProperties properties):base(properties)
 		{
 		}
 	}

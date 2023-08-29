@@ -1,6 +1,9 @@
 ﻿using System;
 namespace EternalFrost.Registry
 {
+	/// <summary>
+	/// Class <c>ResourceLocation</c>: A Path to a Resource with a Namespace and a ID.
+	/// </summary>
 	public class ResourceLocation : IEquatable<ResourceLocation>
 	{
 		public string Namespace { get; }

@@ -31,7 +31,7 @@ Global
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
 		$0.DotNetNamingPolicy = $1
-		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+		$1.DirectoryNamespaceAssociation = PrefixedFlat
 		$0.TextStylePolicy = $2
 		$2.inheritsSet = null
 		$2.scope = application/xml
@@ -41,6 +41,8 @@ Global
 		$4.FileWidth = 80
 		$4.TabsToSpaces = True
 		$4.scope = text/plain
+		$4.TabWidth = 2
+		$4.IndentWidth = 2
 		$0.TextStylePolicy = $5
 		$5.inheritsSet = null
 		$5.scope = text/x-json
@@ -50,6 +52,8 @@ Global
 		$0.TextStylePolicy = $7
 		$7.EolMarker = Unix
 		$7.scope = text/x-csharp
+		$7.TabWidth = 2
+		$7.IndentWidth = 2
 		$0.CSharpFormattingPolicy = $8
 		$8.NewLinesForBracesInProperties = False
 		$8.NewLinesForBracesInAccessors = False
