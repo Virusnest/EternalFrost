@@ -1,6 +1,4 @@
-﻿using System;
-using System.Drawing;
-using EternalFrost.InGameTypes;
+﻿using EternalFrost.InGameTypes;
 using EternalFrost.Types;
 using MonoGame.Extended.Collections;
 
@@ -23,7 +21,7 @@ namespace EternalFrost.Utils.TileMap
 				chunks[chunkPos].SetTile(blockPos, tile);
 			}
 		}
-		public void SetTile(Point pos, int z, WorldTile tile)
+		public void SetTile(System.Drawing.Point pos, int z, WorldTile tile)
 		{
 			SetTile(new TilePos(pos.X, pos.Y, z), tile);
 		}
@@ -34,6 +32,7 @@ namespace EternalFrost.Utils.TileMap
 		public WorldTile GetTile(int x,int y,int z)
 		{
 			var pos = new TilePos(x,y,z);
+			if (!chunks.ContainsKey(pos.ToChunkPos())) { return null; }
 			return chunks[pos.ToChunkPos()].GetTile(pos.ToChunkLocal());
 		}
 		public void SetTile(int x, int y, int z, WorldTile tile)

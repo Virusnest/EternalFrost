@@ -1,7 +1,4 @@
-﻿using System;
-using EternalFrost.InGameTypes;
-
-namespace EternalFrost.Utils.TileMap.Generation
+﻿namespace EternalFrost.Utils.TileMap.Generation
 {
 	public class ChunkGenerator
 	{

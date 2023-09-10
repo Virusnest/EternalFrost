@@ -1,5 +1,4 @@
-﻿using System;
-namespace EternalFrost.InGameTypes
+﻿namespace EternalFrost.InGameTypes
 {
 	public class WorldItem
 	{

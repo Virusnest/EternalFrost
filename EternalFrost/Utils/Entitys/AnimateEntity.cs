@@ -1,7 +1,4 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-
-namespace EternalFrost.Utils.Entitys
+﻿namespace EternalFrost.Utils.Entitys
 {
 	public class AnimateEntity : PhysicalEntity
 	{

@@ -1,6 +1,4 @@
-﻿using System;
-using EternalFrost.Utils.TileMap;
-using Microsoft.Xna.Framework;
+﻿using EternalFrost.Utils.TileMap;
 
 namespace EternalFrost.Types
 {
@@ -48,7 +46,7 @@ namespace EternalFrost.Types
 			return new TilePos(X+(pos.X*Chunk.WIDTH),Y+(pos.Y*Chunk.HEIGHT),Z);
 		}
 		public ChunkPos ToChunkPos() {
-			return new ChunkPos();
+			return new ChunkPos((int)Math.Floor((float)X/Chunk.WIDTH), (int)Math.Floor((float)Y /Chunk.HEIGHT));
 		}
 
 	}

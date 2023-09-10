@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using EternalFrost.InGameTypes;
 using EternalFrost.Types;
 

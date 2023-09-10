@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
 namespace EternalFrost.Utils.Collections
@@ -13,7 +12,7 @@ namespace EternalFrost.Utils.Collections
 
 		int IEqualityComparer<T>.GetHashCode(T obj)
 		{
-			return System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(obj);
+			return RuntimeHelpers.GetHashCode(obj);
 		}
 	}
 

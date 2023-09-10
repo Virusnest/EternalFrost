@@ -1,7 +1,4 @@
-﻿using System;
-using EternalFrost.Utils.Renderers.EntityDrawers;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using EternalFrost.Utils.Renderers.EntityDrawers;
 
 namespace EternalFrost.Utils.Entitys
 {

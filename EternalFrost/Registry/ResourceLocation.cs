@@ -1,5 +1,4 @@
-﻿using System;
-namespace EternalFrost.Registry
+﻿namespace EternalFrost.Registry
 {
 	/// <summary>
 	/// Class <c>ResourceLocation</c>: A Path to a Resource with a Namespace and a ID.

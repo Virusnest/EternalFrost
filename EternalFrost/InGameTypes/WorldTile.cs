@@ -1,5 +1,4 @@
-﻿using System;
-using EternalFrost.Utils.TileMap;
+﻿using EternalFrost.Utils.TileMap;
 using EternalFrost.Registry;
 namespace EternalFrost.InGameTypes
 {

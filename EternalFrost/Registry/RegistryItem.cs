@@ -1,7 +1,4 @@
-﻿using System;
-using System.Xml.Linq;
-
-namespace EternalFrost.Registry
+﻿namespace EternalFrost.Registry
 {
 	public class RegistryItem : IEquatable<RegistryItem>
 	{

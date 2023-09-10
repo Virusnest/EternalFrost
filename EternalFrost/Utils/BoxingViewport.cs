@@ -1,7 +1,5 @@
-﻿using System;
-using MonoGame.Extended.ViewportAdapters;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using MonoGame.Extended.ViewportAdapters;
+
 namespace EternalFrost.Utils
 {
 	public enum BoxingMode

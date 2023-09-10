@@ -1,5 +1,4 @@
-﻿using System;
-namespace EternalFrost.Utils.Item
+﻿namespace EternalFrost.Utils.Item
 {
 	public class Item
 	{

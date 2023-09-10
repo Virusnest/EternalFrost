@@ -1,5 +1,4 @@
-﻿using System;
-using EternalFrost.Utils.TileMap;
+﻿using EternalFrost.Utils.TileMap;
 using EternalFrost.Utils.Entitys;
 using EternalFrost.Input;
 

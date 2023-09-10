@@ -1,5 +1,4 @@
-﻿using System;
-using EternalFrost.InGameTypes;
+﻿using EternalFrost.InGameTypes;
 using EternalFrost.Types;
 
 namespace EternalFrost.Utils.TileMap.Generation
