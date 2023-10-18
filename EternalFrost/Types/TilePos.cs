@@ -41,6 +41,32 @@ namespace EternalFrost.Types
 			
 			return tilePos;
 		}
+
+		public static bool operator ==(TilePos tile1, TilePos tile2)
+		{
+			if (((object)tile1) == null || ((object)tile2) == null)
+				return Equals(tile1, tile2);
+
+			return tile1.Equals(tile2);
+		}
+
+		public static bool operator !=(TilePos tile1, TilePos tile2)
+		{
+			if (((object)tile1) == null || ((object)tile2) == null)
+				return !Equals(tile1, tile2);
+
+			return !tile1.Equals(tile2);
+		}
+		public static TilePos operator -(TilePos tile1, TilePos tile2)
+		{
+			return new TilePos(tile1.X-tile2.X, tile1.Y - tile2.Y,tile1.Z);
+		}
+
+		public static TilePos operator +(TilePos tile1, TilePos tile2)
+		{
+			return new TilePos(tile1.X + tile2.X, tile1.Y + tile2.Y, tile1.Z);
+		}
+
 		public TilePos ToGlobalPos(ChunkPos pos)
 		{
 			return new TilePos(X+(pos.X*Chunk.WIDTH),Y+(pos.Y*Chunk.HEIGHT),Z);

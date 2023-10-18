@@ -27,7 +27,7 @@ namespace EternalFrost.Utils.TileMap
 		}
 		public WorldTile GetTile(TilePos pos)
 		{
-			return chunks[pos.ToChunkPos()].GetTile(pos.ToChunkLocal());
+			return GetTile(pos.X,pos.Y,pos.Z);
 		}
 		public WorldTile GetTile(int x,int y,int z)
 		{

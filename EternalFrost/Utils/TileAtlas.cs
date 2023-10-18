@@ -1,50 +1,55 @@
 ﻿using System;
 using System.Collections.Generic;
+using EternalFrost.Registry;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+using RectpackSharp;
+
 namespace EternalFrost.Utils
 {
-	public class TileAtlas
+	public class TextureAtlas
 	{
 		public RenderTarget2D atlas { get; private set; }
 		private GraphicsDevice device;
 		private SpriteBatch batch;
-		private int tw;
-		private int th;
+		private int tw=1024;
+		private int th=1024;
 		public int textureCount { get; private set; }
-		public Dictionary<string, Rectangle> textures;
+		public Dictionary<ResourceLocation, Sprite> textures;
 
-		public TileAtlas(GraphicsDevice device, int tw, int th, int tiles)
+		public void PackTextures(Texture2D[] textures, ResourceLocation[] id)
 		{
-			textures = new Dictionary<string, Rectangle>();
-			this.th = th;
-			this.tw = tw;
-			batch = new SpriteBatch(device);
-			atlas = new RenderTarget2D(device, tiles*tw,th);
-		}
-		public void AddTexture(Texture2D texture,string id)
-		{
-			batch.GraphicsDevice.SetRenderTarget(atlas);
+			PackingRectangle[] rectangles = new PackingRectangle[textures.Length];
+			for(int i=0; i<rectangles.Length;i++) {
+				rectangles[i]=new PackingRectangle(new System.Drawing.Rectangle(0, 0, textures[i].Width, textures[i].Height),i);
+			}
+			var rect = new PackingRectangle(0, 0, (uint)tw, (uint)th);
+			RectanglePacker.Pack(rectangles,out rect);
+			device.SetRenderTarget(atlas);
 			batch.Begin();
-			batch.Draw(texture,new Vector2(tw*textureCount),Color.White);
-			batch.End();
-			textures.Add(id, new Rectangle(tw * textureCount, 0, th, tw));
-			textureCount++;
-		}
-		public void AddTextures(Texture2D[] texture, string[] id)
-		{
-			batch.GraphicsDevice.SetRenderTarget(atlas);
-			batch.Begin();
-			for (int i = 0; i < id.Length; i++) {
-				batch.Draw(texture[i], new Vector2(tw * textureCount,0), Color.White);
-				textures.Add(id[i], new Rectangle(tw * textureCount, 0, th, tw));
-				textureCount++;
+			// Loop over all the rectangles
+			for (int i = 0; i < rectangles.Length; i++) {
+				Console.WriteLine($"{i} {rectangles[i].Id} "+ id[rectangles[i].Id]);
+				var rec = rectangles[i];
+				var recc= new Rectangle((int)rec.X,(int)rec.Y,(int)rec.Width,(int)rec.Height);
+				batch.Draw(textures[rectangles[i].Id], recc, Color.White);
+				this.textures.Add(id[rectangles[i].Id],new Sprite(recc));
 			}
 			batch.End();
 		}
-		public Texture2D getTexture()
+
+		public TextureAtlas(GraphicsDevice device)
 		{
-			return (Texture2D)atlas;
+			textures = new Dictionary<ResourceLocation, Sprite>();
+			this.device = device;
+			batch = new SpriteBatch(device);
+			atlas = new RenderTarget2D(device, th, tw);
+		}
+		public TextureAtlas(GraphicsDevice device,int size)
+		{
+			textures = new Dictionary<ResourceLocation, Sprite>();
+			this.device = device;
+			batch = new SpriteBatch(device);
+			atlas = new RenderTarget2D(device, size, size);
 		}
 	}
 }

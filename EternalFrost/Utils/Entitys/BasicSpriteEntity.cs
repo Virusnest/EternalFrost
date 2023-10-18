@@ -7,32 +7,35 @@ namespace EternalFrost.Utils.Entitys
 	{
 		public BasicSpriteEntity(Vector2 pos) : base(pos)
 		{
-			Drawer = new StaticSpriteDrawer(EternalFrost.tileAtlas.atlas);
+			Drawer = new StaticSpriteDrawer(EternalFrost.tileAtlas.textures[new Registry.ResourceLocation("textures/entities/basic_sprite_entity.png")]);
 		}
-
 		public override void Update(GameTime gameTime)
 		{
-			if (Keyboard.GetState().IsKeyDown(Keybinds.JUMP.Bind)&&isOnGround) {
-				Velocity+= new Vector2(0, -10f);
+			base.Update(gameTime);
+			//AddForce(new Vector2(-1, 1));
+			if (HasGravity) { Velocity.Y += GRAVITY; }
+			if (Keyboard.GetState().IsKeyDown(Keybinds.JUMP.Bind) && isOnGround) {
+				AddForce(new Vector2(0, -10f));
 				isOnGround = false;
 			}
 			if (Keyboard.GetState().IsKeyDown(Keybinds.W.Bind)) {
-				Velocity += new Vector2(0, -0.5f);
+				AddForce(new Vector2(0, -1f));
 				isOnGround = false;
 			}
 			if (Keyboard.GetState().IsKeyDown(Keybinds.A.Bind)) {
-				Velocity += new Vector2(-0.5f, 0);
+				AddForce(new Vector2(-1f, 0));
 				isOnGround = false;
 			}
 			if (Keyboard.GetState().IsKeyDown(Keybinds.S.Bind)) {
-				Velocity += new Vector2(0, 0.5f);
+				AddForce(new Vector2(0, 1f));
 				isOnGround = false;
 			}
 			if (Keyboard.GetState().IsKeyDown(Keybinds.D.Bind)) {
-				Velocity += new Vector2(0.5f, 0);
+				AddForce(new Vector2(1f, 0));
 				isOnGround = false;
 			}
-			base.Update(gameTime);
+			CalcBBB();
+			EternalFrost.camera.Position = Position+(EternalFrost.camera.Position-EternalFrost.camera.Center);
 		}
 	}
 }

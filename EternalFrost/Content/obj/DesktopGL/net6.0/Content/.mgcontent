@@ -5,14 +5,8 @@
   <Config />
   <SourceFiles>
     <File>/Users/25kmaloney/Projects/EternalFrost/EternalFrost/Content/font/eternalfrost/font.spritefont</File>
-    <File>/Users/25kmaloney/Projects/EternalFrost/EternalFrost/Content/texture/eternalfrost/tiles/ice.png</File>
-    <File>/Users/25kmaloney/Projects/EternalFrost/EternalFrost/Content/texture/eternalfrost/tiles/snow.png</File>
-    <File>/Users/25kmaloney/Projects/EternalFrost/EternalFrost/Content/texture/eternalfrost/tiles/snowy_ice.png</File>
   </SourceFiles>
   <DestFiles>
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

@@ -15,7 +15,7 @@ namespace EternalFrost.Input
 		public static Keybind S = add(new ResourceLocation("s"), new Keybind(Keys.S));
 		private static Keybind add(ResourceLocation id, Keybind keybind)
 		{
-			return Registries.KEYBINDS.Register(id, keybind);
+			return Registries.KEYBIND_REG.Register(id, keybind);
 		}
 	}
 }

@@ -1,8 +1,4 @@
-﻿using System.Linq;
-using System.Security.Cryptography;
-using System.Security.Principal;
-using System.Threading;
-using EternalFrost.InGameTypes;
+﻿using EternalFrost.InGameTypes;
 using EternalFrost.Types;
 using EternalFrost.Utils.ClassExtentions;
 using EternalFrost.Utils.Entitys;
@@ -19,6 +15,7 @@ namespace EternalFrost.Managers
 		public World world;
 		ChunkGenerator generator;
 		public WorldRenderer renderer;
+		public Player player;
 		
 		public WorldManager()
 		{
@@ -58,7 +55,6 @@ namespace EternalFrost.Managers
 				//ThreadPool.QueueUserWorkItem(Generate, chunk,true);
 				Generate(chunk);
 				foreach (Entity entity in chunk.entities) {
-					entity.Update(time);
 					if (entity.Position.ToTilePos(1).ToChunkPos() != chunk.pos) {
 						//Console.WriteLine(chunk.pos.ToString()+" "+entity.Position.ToString());
 						if (world.chunks.ContainsKey(entity.Position.ToTilePos(1).ToChunkPos())) {
@@ -68,6 +64,10 @@ namespace EternalFrost.Managers
 					}
 					if(entity is PhysicalEntity) {
 						((PhysicalEntity)entity).UpdateMovement(world);
+					}
+					entity.Update(time);
+					if (entity is PhysicalEntity) {
+						((PhysicalEntity)entity).CalcBBB();
 					}
 				}
 				var boundpos = new Vector2(chunk.pos.X * ChunkRenderer.TILESIZE * Chunk.WIDTH, chunk.pos.Y * ChunkRenderer.TILESIZE * Chunk.HEIGHT);

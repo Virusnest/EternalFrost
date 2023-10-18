@@ -7,14 +7,14 @@ namespace EternalFrost.Utils.Renderers.EntityDrawers
 {
 	public class StaticSpriteDrawer : EntityDrawer
 	{
-		public Texture2D Sprite;
-		public StaticSpriteDrawer(Texture2D sprite)
+		public Sprite Sprite;
+		public StaticSpriteDrawer(Sprite sprite)
 		{
 			Sprite = sprite;
 		}
 		public override void Draw(SpriteBatch batch,RenderingEntity entity)
 		{
-			batch.Draw(Sprite,entity.Position,Color.White);
+			batch.Draw(EternalFrost.tileAtlas.atlas,entity.Position,Sprite.Bounds,Color.White);
 		}
 	}
 }

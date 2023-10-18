@@ -9,6 +9,8 @@ namespace EternalFrost
 {
 	public static class Globals
 	{
+		public static float XVel=0;
+
 	}
 }
 

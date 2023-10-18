@@ -44,7 +44,15 @@ namespace EternalFrost.Types
 
 			return !chunk1.Equals(chunk2);
 		}
+		public static ChunkPos operator -(ChunkPos tile1, ChunkPos tile2)
+		{
+			return new ChunkPos(tile1.X - tile2.X, tile1.Y - tile2.Y);
+		}
 
+		public static ChunkPos operator +(ChunkPos tile1, ChunkPos tile2)
+		{
+			return new ChunkPos(tile1.X + tile2.X, tile1.Y + tile2.Y);
+		}
 		public override bool Equals(object obj)
 		{
 			return obj is ChunkPos && Equals((ChunkPos)obj);

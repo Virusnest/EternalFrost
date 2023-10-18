@@ -6,10 +6,12 @@ namespace EternalFrost.InGameTypes
 	{
 		public Tile tile { get; }
 		public RegistryItem registryItem { get; }
+		public TileProperties Properties { get; }
 		
 		public WorldTile(Tile tile)
 		{
 			this.tile = tile;
+			Properties = tile.Properties;
 			registryItem = Registries.TILE_REG.GetKey(tile);
 		}
 		public WorldTile(ResourceLocation location)

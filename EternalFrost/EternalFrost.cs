@@ -7,6 +7,7 @@ using EternalFrost.Types;
 using EternalFrost.Utils.TileMap;
 using System.IO;
 using EternalFrost.Input;
+using EternalFrost.Entitys;
 
 namespace EternalFrost;
 
@@ -14,16 +15,16 @@ public class EternalFrost : Game
 {
   Texture2D TileTexture;
 
-  private GraphicsDeviceManager _graphics;
+  public static GraphicsDeviceManager _graphics;
   public static SpriteBatch _spriteBatch;
   private RenderTarget2D _lowResTarget;
-  private int _ResWidth = 16 * 10 * 5;
-  private int _ResHeight = 9 * 10 * 5;
+  public static int _ResWidth = 16 * 10 * 6;
+  public static int _ResHeight = 9 * 10 * 6;
   public static SpriteFont font;
   BoxingViewportAdapter viewport;
-  public static TileAtlas tileAtlas;
-  OrthographicCamera camera;
-  public OrthographicCamera mouseCam;
+  public static TextureAtlas tileAtlas;
+  public static OrthographicCamera camera;
+  OrthographicCamera mouseCam;
 
   WorldManager manager = new WorldManager();
 
@@ -43,6 +44,7 @@ public class EternalFrost : Game
   {
     // TODO: Add your initialization logic here
     base.Initialize();
+    TargetElapsedTime = TimeSpan.FromMilliseconds(1000 / 60);
     Window.AllowUserResizing = true;
     Console.WriteLine("INIT");
     _lowResTarget = new RenderTarget2D(GraphicsDevice, _ResWidth, _ResHeight);
@@ -52,18 +54,10 @@ public class EternalFrost : Game
     camera.Position = new Vector2(0, 0);
     _graphics.SynchronizeWithVerticalRetrace = false;
     //tileAtlas = TextureAtlas.Create("tiles", TILE_ATLAS_TEXTURE, 16, 16);
-    tileAtlas = new TileAtlas(GraphicsDevice, 8, 8, 256);
+    tileAtlas = new TextureAtlas(GraphicsDevice);
     Console.Write(Tiles.ICE);
-    int counter = 0;
-    Texture2D[] texture = new Texture2D[Registry.Registries.TILE_REG.GetLength()];
-    string[] id = new string[Registry.Registries.TILE_REG.GetLength()];
-    foreach (Registry.RegistryItem entry in Registry.Registries.TILE_REG.Keys()) {
-      Console.WriteLine("texture/" + entry.getLocation());
-      texture[counter] = Content.Load<Texture2D>("texture/" + entry.getLocation());
-      id[counter] = entry.getLocation();
-      counter++;
-    }
-    tileAtlas.AddTextures(texture, id);
+		AssetManager.LoadAssets();
+    AssetManager.AtlasTextures();
     manager.Init();
   }
 

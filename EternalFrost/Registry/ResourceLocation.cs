@@ -37,13 +37,21 @@
 			if (obj == null) return false;
 			if (!(obj is ResourceLocation)) return false;
 			ResourceLocation other = (ResourceLocation)obj;
-			return (other.Namespace == Namespace)&& (other.ID == ID);
+			return (other.Namespace == Namespace) && (other.ID == ID);
+		}
+		public ResourceLocation WithSuffix(string suffix)
+		{
+			return new ResourceLocation(this.Namespace, this.ID + suffix);
+		}
+
+		public ResourceLocation WithPrefixID(string prefix)
+		{
+			return new ResourceLocation(this.Namespace,prefix + this.ID);
 		}
 		public string getLocation()
 		{
 			return $"{Namespace}/{ID}";
 		}
-
 	}
 }
 

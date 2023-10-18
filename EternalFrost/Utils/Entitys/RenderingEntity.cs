@@ -9,7 +9,7 @@ namespace EternalFrost.Utils.Entitys
 		public RenderingEntity(Vector2 position): base(position)
 		{
 		}
-		public void Render(SpriteBatch batch)
+		public virtual void Render(SpriteBatch batch)
 		{
 			Drawer.Draw(batch, this);
 		}

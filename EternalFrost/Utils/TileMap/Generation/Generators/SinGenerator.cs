@@ -5,11 +5,8 @@ namespace EternalFrost.Utils.TileMap.Generation.Generators
 {
 	public class SinGenerator : Generator
 	{
-		
 		WorldTile tile;
 		FastNoiseLite noise = new FastNoiseLite();
-
-
 		static private Vector2[] vecs = { new Vector2(0,0), new Vector2(0.45f, 10), new Vector2(0.5f,90),new Vector2(1,100) };
 		public SinGenerator(WorldTile tile)
 		{

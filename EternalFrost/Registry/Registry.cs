@@ -16,7 +16,7 @@ namespace EternalFrost.Registry
 		{
 			ItemToValue.Add(new RegistryItem(ID,name),item);
 			ValueToItem.Add(item, new RegistryItem(ID, name));
-			Console.WriteLine(new RegistryItem(ID, name).ToString());
+			//Console.WriteLine(new RegistryItem(ID, name).ToString());
 			return item;
 		}
 		public T GetValue(ResourceLocation location)

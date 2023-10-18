@@ -12,6 +12,14 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <WarningLevel>4</WarningLevel>
+    <CustomCommands>
+      <CustomCommands>
+        <Command>
+          <type>AfterBuild</type>
+          <command>cp -r Assets ${TargetDir}</command>
+        </Command>
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,6 +40,8 @@
     <None Remove="Utils\TileMap\Generation\Generators\" />
     <None Remove="Utils\Renderers\EntityDrawers\" />
     <None Remove="Utils\ClassExtentions\" />
+    <None Remove="Assets\" />
+    <None Remove="Utils\Collision\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
@@ -42,6 +52,7 @@
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
     <PackageReference Include="MonoGame.Extended" Version="3.8.0" />
     <PackageReference Include="MonoGame.Extended.Particles" Version="3.8.0" />
+    <PackageReference Include="RectpackSharp" Version="1.1.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utils\Collections\" />
@@ -55,6 +66,8 @@
     <Folder Include="Utils\TileMap\Generation\Generators\" />
     <Folder Include="Utils\Renderers\EntityDrawers\" />
     <Folder Include="Utils\ClassExtentions\" />
+    <Folder Include="Assets\" />
+    <Folder Include="Utils\Collision\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />

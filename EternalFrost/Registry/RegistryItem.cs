@@ -1,4 +1,7 @@
-﻿namespace EternalFrost.Registry
+﻿using System.Dynamic;
+using System.IO;
+
+namespace EternalFrost.Registry
 {
 	public class RegistryItem : IEquatable<RegistryItem>
 	{
@@ -26,11 +29,11 @@
 		}
 		public override string ToString()
 		{
-			return $"{Location.ToString()}/{Value.ID}";
+			return $"{Location}/{Value.ID}";
 		}
-		public string getLocation()
+		public ResourceLocation getLocation()
 		{
-			return $"{Location.getLocation()}/{Value.ID}";
+			return new ResourceLocation(Location.Namespace,$"{Location.ID}/{Value.ID}");
 		}
 	}
 }

@@ -4,7 +4,7 @@ namespace EternalFrost.Utils.TileMap.Tiles
 	public class Tiles
 	{
 		public static Tile ICE = Register("ice", new GroundTile(new TileProperties() {
-			Frition = 1f,
+			Frition = 0.9f,
 			Solid = true
 		}));
 		public static Tile SNOW = Register("snow", new SnowTile(new TileProperties()));
@@ -13,7 +13,7 @@ namespace EternalFrost.Utils.TileMap.Tiles
 		private static Tile Register(string id, Tile tile)
 		{
 			return Registry.Registries.TILE_REG.Register(new Registry.ResourceLocation(id), tile);
-		}
+		} 
 	}
 }
 

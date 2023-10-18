@@ -1,6 +1,6 @@
 ﻿namespace EternalFrost.Utils.Entitys
 {
-	public class AnimateEntity : PhysicalEntity
+	public class AnimateEntity : BasicSpriteEntity
 	{
 		public float Temperature;
 		public float Health;

@@ -21,7 +21,7 @@ namespace EternalFrost.Utils.TileMap
 	public class TileProperties
 	{
 		public bool Solid,Visible = true;
-		public float Frition=1;
+		public float Frition=0.9f;
 	}
 }
 

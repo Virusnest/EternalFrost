@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using System.Linq;
+using EternalFrost.Collision;
+using EternalFrost.Input;
 using EternalFrost.Types;
 using EternalFrost.Utils.ClassExtentions;
 using EternalFrost.Utils.TileMap;
@@ -9,22 +13,26 @@ namespace EternalFrost.Utils.Entitys
 	{
 		public const float GRAVITY = 0.5f;
 		public RectangleF CollisionBox;
-		public Vector2 Velocity;
+		public Vector2 Velocity = Vector2.Zero;
 		public bool isPhysical = true;
 		private bool hasCollided = false;
 		public bool isOnGround = false;
+		private bool groundnextframe = false;
 		public bool HasGravity = true;
+		public RectangleF BBB;
 		public float Mass=1;
-		public float AirFriction = 0.9f;
+		public Vector2 Force;
+		public float AirFriction = 0.01f;
 		public Vector2 Acceleration;
 		public float friction;
-		public Vector2 oldPosition;
+		private bool Colliding=false;
+		RectangleF slideBox = new RectangleF(0,0,6,16);
 		public PhysicalEntity(Vector2 position) : base(position)
 		{
 			Velocity = Vector2.Zero;
-			CollisionBox = new RectangleF(0, 0, 8, 8);
+			CollisionBox = new RectangleF(1, 0, 6, 16);
+			BBB = new RectangleF();
 		}
-
 		public RectangleF WorldCollider()
 		{
 			var tmp = CollisionBox;
@@ -40,8 +48,8 @@ namespace EternalFrost.Utils.Entitys
 
 		public void AddForce(Vector2 force)
 		{
-			//f=m*a
-			Acceleration = force / Mass;
+			//F=ma
+			Velocity +=force / Mass;
 		}
 		public bool isColliding(RectangleF rect)
 		{ 
@@ -51,57 +59,95 @@ namespace EternalFrost.Utils.Entitys
 		{
 			return WorldColliderPredict().Intersects(rect);
 		}
+		public TilePos getTilePos()
+		{
+			return (Position + new Vector2(CollisionBox.Width / 2, CollisionBox.Bottom)).ToTilePos(1);
+		}
+
+		public void ApplyAirResistance()
+		{
+			// Calculate air resistance force (opposite direction of velocity)
+			Vector2 airResistance = -Velocity * Velocity.Length() * AirFriction;
+
+			// Apply the air resistance force
+			AddForce(airResistance);
+		}
 		public void UpdateMovement(World world)
 		{
-			oldPosition = Position;
-			Velocity *= AirFriction;
-			//Velocity += Acceleration;
-			//Acceleration *= 0;
-			Position.X += Velocity.X;
-			if (isPhysical) { if (UpdateCollision(world)) { Position.X = oldPosition.X;
-					Velocity.X = 0;
-				} }
-			Position.Y += Velocity.Y;
+
 			if (isPhysical) {
-				if (UpdateCollision(world)) {
-					if (Velocity.Y >= 0) isOnGround = true;
-					Position.Y = oldPosition.Y;
-					Velocity.Y = 0;
-				}
+				UpdateCollision(world);
 			}
-			if (HasGravity) { Velocity.Y += GRAVITY; }
+			Position += Velocity;
+			if (world.GetTile(getTilePos() + new TilePos(0, 1, 0)) != null)
+				Velocity.X *= world.GetTile(getTilePos() + new TilePos(0, 1, 0)).Properties.Frition;
+			//else
+			ApplyAirResistance();
+			//Velocity *= AirFriction;
 		}
-		public bool UpdateCollision(World world)
+
+		public void CalcBBB()
 		{
-			bool hasCollided = false;
-			for (int x= (int)MathF.Floor(Position.X/ChunkRenderer.TILESIZE)-1; x < Position.ToTilePos(1).X+(int)CollisionBox.Width / ChunkRenderer.TILESIZE+1; x++){
-				for (int y = (int)MathF.Floor(Position.Y / ChunkRenderer.TILESIZE)-1; y < Position.ToTilePos(1).Y + (int)CollisionBox.Height / ChunkRenderer.TILESIZE+1; y++) {
-					if (world.GetTile(x, y, 1) != null) {
-						if (CollidesWith(new TilePos(x, y, 1), WorldCollider())) {
-							//Position = oldPosition;
-							//Velocity *=0;
-							hasCollided=true;
-						}
-						RectangleF down = WorldCollider();
-						down.Offset(0, 1);
-						if (CollidesWith(new TilePos(x, y, 1), down)) {
-							//isOnGround = true;
-							//return true;
-						} //else { isOnGround = false; }
+			var worldColl = WorldCollider();
+			if (Velocity.X > 0) {
+				BBB.X=worldColl.X;
+			} else { BBB.X = WorldColliderPredict().X; }
+			if (Velocity.Y > 0) {
+				BBB.Y = worldColl.Y;
+			} else { BBB.Y = WorldColliderPredict().Y; }
+			BBB.Width = worldColl.Width + Math.Abs(Velocity.X);
+			BBB.Height = worldColl.Height + Math.Abs(Velocity.Y);
+		}
+		public void UpdateCollision(World world)
+		{
+			for (int i = 0; i < 2	; i++) {
+				List<CollisionResult> collisions = new List<CollisionResult>();
+				for (int x = (int)MathF.Floor(BBB.Left / ChunkRenderer.TILESIZE); x < (int)MathF.Ceiling(BBB.Right / ChunkRenderer.TILESIZE); x++) {
+					for (int y = (int)MathF.Floor(BBB.Top / ChunkRenderer.TILESIZE); y < (int)MathF.Ceiling(BBB.Bottom / ChunkRenderer.TILESIZE); y++) {
+						var pos = new TilePos(x, y, 1);
+						if (world.GetTile(pos) == null) continue;
+						var plat = new RectangleF(pos.ToWorldVec().X, pos.ToWorldVec().Y, 8, 8);
+						var col = Collisions.SweptAABB(WorldCollider(), plat, Velocity);
+						if (col.Normal == Vector2.Zero) continue;
+						collisions.Add(col);
 					}
 				}
+				if (collisions.Count == 0) break;
+				CollisionResult minValue = collisions.Aggregate((min, current) => current.EntryTime < min.EntryTime ? current : min);
+				float collisiontime = minValue.EntryTime;
+				var normal = minValue.Normal;
+				collisiontime -= 0.001f;
+				//Console.WriteLine(normal);
+				if (normal.Y != 0) {
+					Console.WriteLine(Velocity.Y);
+					if (Velocity.Y >= 0) isOnGround = true;
+
+				}
+				Velocity += normal * new Vector2(MathF.Abs(Velocity.X), MathF.Abs(Velocity.Y)) * (1 - collisiontime);
+				Velocity.ToAngle();
+
+				if (normal.X != 0) {
+
+				}
+
 			}
-			return hasCollided;
+			//
 
 		}
-		public bool CollidesWith(TilePos pos,RectangleF collider)
+		public override void Render(SpriteBatch batch)
 		{
-			var rec = new RectangleF(pos.ToWorldVec().X, pos.ToWorldVec().Y, 8,8);
-			//rec.Intersects(WorldCollider());
-			//bool xoverlaps = (pos.ToWorldVec().X < WorldCollider().Right) &&(pos.ToWorldVec().X+ChunkRenderer.TILESIZE> WorldCollider().Left);
-			//bool yoverlaps = (pos.ToWorldVec().Y < WorldCollider().Bottom) && ((pos.ToWorldVec().Y+ ChunkRenderer.TILESIZE) < (WorldCollider().Top));
-
-			return rec.Intersects(collider);
+			base.Render(batch);
+			for (int x = (int)MathF.Floor(BBB.Left / ChunkRenderer.TILESIZE); x < (int)MathF.Ceiling(BBB.Right / ChunkRenderer.TILESIZE); x++) {
+				for (int y = (int)MathF.Floor(BBB.Top / ChunkRenderer.TILESIZE); y < (int)MathF.Ceiling(BBB.Bottom / ChunkRenderer.TILESIZE); y++) {
+					var pos = new TilePos(x, y, 1);
+					var plat = new RectangleF(pos.ToWorldVec().X, pos.ToWorldVec().Y, 8, 8);
+					//batch.DrawRectangle(plat, Color.Black);
+				}
+			}
+			
+			batch.DrawRectangle(WorldCollider(), Color.White);
+			batch.DrawRectangle(WorldColliderPredict(), Color.White);
+			batch.DrawLine(Vector2.Zero, 100, EternalFrost.camera.ScreenToWorld(Mouse.GetState().Position.ToVector2()).ToAngle(), Color.Red);
 		}
 		protected virtual void OnCollide()
 		{
