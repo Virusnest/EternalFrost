@@ -1,12 +1,7 @@
-﻿using System;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-
-namespace EternalFrost.Utils.TileMap
+﻿namespace EternalFrost.Utils.TileMap.Tile
 {
 	public class Tile
 	{
-
 		public TileProperties Properties;
 		public Tile(TileProperties properties)
 		{
@@ -15,7 +10,6 @@ namespace EternalFrost.Utils.TileMap
 		public void Update() { }
 		public void Broken() { }
 		public void Placed() { }
-		
 	}
 
 	public class TileProperties

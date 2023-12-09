@@ -1,36 +1,35 @@
-﻿using EternalFrost.Utils.TileMap.Tiles;
-using MonoGame.Extended;
-using MonoGame.Extended.ViewportAdapters;
+﻿using EternalFrost.Utils.TileMap.Tile;
+
 using EternalFrost.Utils;
 using EternalFrost.Managers;
 using EternalFrost.Types;
 using EternalFrost.Utils.TileMap;
 using System.IO;
 using EternalFrost.Input;
-using EternalFrost.Entitys;
+using MonoGame.Extended.ViewportAdapters;
+using MonoGame.Extended;
+using EternalFrost.Item;
 
 namespace EternalFrost;
 
 public class EternalFrost : Game
 {
-  Texture2D TileTexture;
-
   public static GraphicsDeviceManager _graphics;
   public static SpriteBatch _spriteBatch;
   private RenderTarget2D _lowResTarget;
-  public static int _ResWidth = 16 * 10 * 6;
-  public static int _ResHeight = 9 * 10 * 6;
+  public static int _ResWidth = 16 * 10 * 4;
+  public static int _ResHeight = 9 * 10 * 4;
   public static SpriteFont font;
   BoxingViewportAdapter viewport;
   public static TextureAtlas tileAtlas;
   public static OrthographicCamera camera;
   OrthographicCamera mouseCam;
-
-  WorldManager manager = new WorldManager();
-
+  public static TimeSpan elapsedtime;
+  public static WorldManager manager = new WorldManager();
   public EternalFrost()
   {
-    _graphics = new GraphicsDeviceManager(this) {
+    _graphics = new GraphicsDeviceManager(this)
+    {
       PreferMultiSampling = true,
       PreferredBackBufferHeight = _ResHeight,
       SynchronizeWithVerticalRetrace = false,
@@ -55,10 +54,10 @@ public class EternalFrost : Game
     _graphics.SynchronizeWithVerticalRetrace = false;
     //tileAtlas = TextureAtlas.Create("tiles", TILE_ATLAS_TEXTURE, 16, 16);
     tileAtlas = new TextureAtlas(GraphicsDevice);
-    Console.Write(Tiles.ICE);
-		AssetManager.LoadAssets();
-    AssetManager.AtlasTextures();
-    manager.Init();
+    Console.Write(Tiles.STONE);
+
+		AssetManager.AtlasTextures();
+		manager.Init();
   }
 
 
@@ -69,75 +68,71 @@ public class EternalFrost : Game
 
   protected override void LoadContent()
   {
-    font = this.Content.Load<SpriteFont>("font/eternalfrost/font");
-    _spriteBatch = new SpriteBatch(GraphicsDevice);
-    // TODO: use this.Content to load your game content here
-    // TODO: use this.Content to load your game content here
+		Console.Write(Items.SNOWBALL);
 
-  }
+		font = this.Content.Load<SpriteFont>("font/eternalfrost/font");
+    _spriteBatch = new SpriteBatch(GraphicsDevice);
+		AssetManager.LoadAssets();
+		// TODO: use this.Content to load your game content here
+		// TODO: use this.Content to load your game content here
+
+	}
   bool shot = false;
   protected override void Update(GameTime gameTime)
-  { 
+  {
     mouseCam.Position = camera.Position;
-		if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+    if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
       Exit();
 
     if (Mouse.GetState().LeftButton == ButtonState.Pressed)
     {
-      
-			var pos = camera.ScreenToWorld(Mouse.GetState().Position.ToVector2());
-			// Apply scaling to world coordinates      
+
+      var pos = camera.ScreenToWorld(Mouse.GetState().Position.ToVector2());
+      // Apply scaling to world coordinates      
       manager.world.SetTile(new TilePos((int)MathF.Floor(pos.X / ChunkRenderer.TILESIZE), (int)MathF.Floor(pos.Y / ChunkRenderer.TILESIZE), 1), null);
     }
     if (Mouse.GetState().RightButton == ButtonState.Pressed)
     {
       var pos = mouseCam.ScreenToWorld(Mouse.GetState().Position.ToVector2());
-      manager.world.SetTile(new TilePos((int)MathF.Floor(pos.X / ChunkRenderer.TILESIZE), (int)MathF.Floor(pos.Y / ChunkRenderer.TILESIZE), 1), new InGameTypes.WorldTile(Tiles.SNOWY_ICE));
+      manager.world.SetTile(new TilePos((int)MathF.Floor(pos.X / ChunkRenderer.TILESIZE), (int)MathF.Floor(pos.Y / ChunkRenderer.TILESIZE), 1), new InGameTypes.WorldTile(Tiles.STONE));
     }
-    if (Keyboard.GetState().IsKeyDown(Keys.Enter)&&!shot) {
-      FileStream stream = File.Create(DateTime.Now.ToFileTime()+".png");
-      _lowResTarget.SaveAsPng(stream,_ResWidth,_ResHeight);
+    if (Keyboard.GetState().IsKeyDown(Keys.Enter) && !shot)
+    {
+      FileStream stream = File.Create(DateTime.Now.ToFileTime() + ".png");
+      _lowResTarget.SaveAsPng(stream, _ResWidth, _ResHeight);
       shot = !shot;
     }
-		if (Keyboard.GetState().IsKeyUp(Keys.Enter) && shot) {
-			shot = !shot;
-		}
-    if (Keyboard.GetState().IsKeyDown(Keybinds.LEFT.Bind))
-      camera.Move(new Vector2(-5, 0));
-    if (Keyboard.GetState().IsKeyDown(Keybinds.RIGHT.Bind))
-      camera.Move(new Vector2(5f, 0));
-    if (Keyboard.GetState().IsKeyDown(Keybinds.UP.Bind))
-      camera.Move(new Vector2(0, -5f));
-    if (Keyboard.GetState().IsKeyDown(Keybinds.DOWN.Bind))
-      camera.Move(new Vector2(0, 5f));
+    if (Keyboard.GetState().IsKeyUp(Keys.Enter) && shot)
+    {
+      shot = !shot;
+    }
+    // Additional logic for handling resize if necessary
 
-		// Additional logic for handling resize if necessary
+    //camera.Position = new Vector2(0.1f * (float)gameTime.TotalGameTime.Seconds);
+    // TODO: Add your update logic here
+    manager.Update(camera, gameTime);
+		elapsedtime = gameTime.TotalGameTime;
+    base.Update(gameTime);
+  }
 
-		//camera.Position = new Vector2(0.1f * (float)gameTime.TotalGameTime.Seconds);
-		// TODO: Add your update logic here
-	  manager.Update(camera, gameTime);
-  	base.Update(gameTime);
-
-	}
-
-	protected override void Draw(GameTime gameTime)
+  protected override void Draw(GameTime gameTime)
   {
 
-		GraphicsDevice.SetRenderTarget(_lowResTarget);
+    GraphicsDevice.SetRenderTarget(_lowResTarget);
     GraphicsDevice.Clear(Color.CornflowerBlue);
     manager.Render(_spriteBatch, camera.GetViewMatrix());
     DrawToMainBuffer();
     base.Draw(gameTime);
     _spriteBatch.Begin();
-    _spriteBatch.DrawString(font, (1000/gameTime.ElapsedGameTime.Milliseconds).ToString(), Vector2.Zero, Color.White);
+    _spriteBatch.DrawString(font, (1000 / gameTime.ElapsedGameTime.Milliseconds).ToString(), Vector2.Zero, Color.White);
     _spriteBatch.End();
     // TODO: Add your drawing code here
 
   }
   private void DrawToMainBuffer()
   {
-		GraphicsDevice.Viewport =new Viewport(MathG.CalcAspectScale(Window.ClientBounds, _ResWidth, _ResHeight));
-		GraphicsDevice.SetRenderTarget(null);
+    GraphicsDevice.Viewport = new Viewport(MathG.CalcAspectScale(Window.ClientBounds, _ResWidth, _ResHeight));
+    GraphicsDevice.SetRenderTarget(null);
     GraphicsDevice.Clear(Color.Black);
     Rectangle size = MathG.CalcAspectScale(Window.ClientBounds, _ResWidth, _ResHeight);
     //Console.WriteLine(size);

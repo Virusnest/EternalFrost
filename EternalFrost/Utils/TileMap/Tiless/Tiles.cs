@@ -1,8 +1,9 @@
 ﻿using System;
-namespace EternalFrost.Utils.TileMap.Tiles
+namespace EternalFrost.Utils.TileMap.Tiless
 {
 	public class Tiles
 	{
+		public static Tile EMPTY = Register("empty", new Tile(new TileProperties()));
 		public static Tile ICE = Register("ice", new GroundTile(new TileProperties() {
 			Frition = 0.9f,
 			Solid = true

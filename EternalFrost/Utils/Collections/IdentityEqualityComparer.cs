@@ -8,6 +8,7 @@ namespace EternalFrost.Utils.Collections
 		bool IEqualityComparer<T>.Equals(T x, T y)
 		{
 			return object.ReferenceEquals(x, y);
+			
 		}
 
 		int IEqualityComparer<T>.GetHashCode(T obj)

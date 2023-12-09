@@ -6,7 +6,6 @@ namespace EternalFrost.Utils.Renderers
 		public DebugRenderer()
 		{
 		}
-
 	}
 }
 

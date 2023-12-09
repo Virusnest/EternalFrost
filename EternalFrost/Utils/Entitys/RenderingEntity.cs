@@ -1,4 +1,5 @@
 ﻿using EternalFrost.Utils.Renderers.EntityDrawers;
+using EternalFrost.Utils.TileMap;
 
 namespace EternalFrost.Utils.Entitys
 {
@@ -6,7 +7,7 @@ namespace EternalFrost.Utils.Entitys
 	{
 		protected EntityDrawer Drawer;
 		public bool Visible = true;
-		public RenderingEntity(Vector2 position): base(position)
+		public RenderingEntity(Vector2 position, World world): base(position, world)
 		{
 		}
 		public virtual void Render(SpriteBatch batch)

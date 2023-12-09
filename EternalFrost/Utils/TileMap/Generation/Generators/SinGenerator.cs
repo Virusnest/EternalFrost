@@ -1,5 +1,6 @@
 ﻿using EternalFrost.InGameTypes;
 using EternalFrost.Types;
+using EternalFrost.Utils.TileMap.Tile;
 
 namespace EternalFrost.Utils.TileMap.Generation.Generators
 {
@@ -7,14 +8,14 @@ namespace EternalFrost.Utils.TileMap.Generation.Generators
 	{
 		WorldTile tile;
 		FastNoiseLite noise = new FastNoiseLite();
-		static private Vector2[] vecs = { new Vector2(0,0), new Vector2(0.45f, 10), new Vector2(0.5f,90),new Vector2(1,100) };
+		static private Vector2[] vecs = { new Vector2(0,0), new Vector2(0.45f, 10), new Vector2(0.5f,90),new Vector2(1,1000) };
 		public SinGenerator(WorldTile tile)
 		{
 			this.tile = tile;
 			noise.SetNoiseType(FastNoiseLite.NoiseType.OpenSimplex2);
 			noise.SetFractalType(FastNoiseLite.FractalType.FBm);
-			noise.SetFractalOctaves(16);
-			noise.SetFrequency(0.001f);
+			noise.SetFractalOctaves(8);
+			noise.SetFrequency(0.005f);
 		}
 		public override WorldTile GetTile(TilePos pos)
 		{
@@ -22,16 +23,19 @@ namespace EternalFrost.Utils.TileMap.Generation.Generators
 			///if (noise.GetNoise(pos.X, pos.Y) > normaliseRange(0,-100,pos.Y)) { return tile; }
 			///			noise.SetFractalOctaves(1);
 
-			if (pos.Z != 1) return null;
+			if (pos.Z != 1) return new WorldTile(Tiles.EMPTY);
 			noise.SetFractalOctaves(8);
-			var range = normaliseRange(-1, 1, noise.GetNoise(pos.X, 1));
+			var range = normaliseRange(0, lerp(normaliseRange(-1, 1, noise.GetNoise(pos.X, 1)), vecs), pos.Y);
 			noise.SetFractalOctaves(32);
-			if ((noise.GetNoise(pos.X, 1)-1)*-1 * 25-15 < pos.Y && noise.GetNoise(pos.X, 1) * 200-15 > pos.Y) return tile;
-			if (lerp(range, vecs) < pos.Y) return tile;
-			return null;
+			//if ((noise.GetNoise(pos.X, 1)-1)*-1 * 25-15 < pos.Y && noise.GetNoise(pos.X, 1) * 200-15 > pos.Y) return new WorldTile(Tiles.STONE);
+			if (noise.GetNoise(pos.X , pos.Y)<range) return new WorldTile(Tiles.STONE);
+			//if (lerp(range, vecs) < pos.Y - 1) return tile;
+			//if (lerp(range, vecs) < pos.Y) return new WorldTile(Tiles.SNOW);
+
+			return new WorldTile(Tiles.EMPTY);
 		}
 
-		public float normaliseRange(int min, int max, float amount)
+		public float normaliseRange(float min, float max, float amount)
 		{
 			return (float)(amount - min) / (max - min);
 		}

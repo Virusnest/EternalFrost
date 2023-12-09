@@ -54,6 +54,10 @@
               "target": "Package",
               "version": "[3.8.1.303, )"
             },
+            "PeterO.Cbor": {
+              "target": "Package",
+              "version": "[4.5.2, )"
+            },
             "RectpackSharp": {
               "target": "Package",
               "version": "[1.1.0, )"

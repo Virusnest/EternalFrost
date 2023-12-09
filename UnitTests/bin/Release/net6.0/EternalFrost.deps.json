@@ -11,10 +11,19 @@
           "MonoGame.Content.Builder.Task": "3.8.1.303",
           "MonoGame.Extended": "3.8.0",
           "MonoGame.Extended.Particles": "3.8.0",
-          "MonoGame.Framework.DesktopGL": "3.8.1.303"
+          "MonoGame.Framework.DesktopGL": "3.8.1.303",
+          "RectpackSharp": "1.1.0"
         },
         "runtime": {
           "EternalFrost.dll": {}
+        }
+      },
+      "Microsoft.Bcl.HashCode/1.1.1": {
+        "runtime": {
+          "lib/netcoreapp2.1/Microsoft.Bcl.HashCode.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "4.700.20.56604"
+          }
         }
       },
       "MonoGame.Content.Builder.Task/3.8.1.303": {},
@@ -97,7 +106,20 @@
             "fileVersion": "12.0.3.23909"
           }
         }
-      }
+      },
+      "RectpackSharp/1.1.0": {
+        "dependencies": {
+          "Microsoft.Bcl.HashCode": "1.1.1",
+          "System.Memory": "4.5.4"
+        },
+        "runtime": {
+          "lib/netstandard2.0/RectpackSharp.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
+          }
+        }
+      },
+      "System.Memory/4.5.4": {}
     }
   },
   "libraries": {
@@ -105,6 +127,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Microsoft.Bcl.HashCode/1.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MalY0Y/uM/LjXtHfX/26l2VtN4LDNZ2OE3aumNOHDLsT4fNYy2hiHXI4CXCqKpNUNm7iJ2brrc4J89UdaL56FA==",
+      "path": "microsoft.bcl.hashcode/1.1.1",
+      "hashPath": "microsoft.bcl.hashcode.1.1.1.nupkg.sha512"
     },
     "MonoGame.Content.Builder.Task/3.8.1.303": {
       "type": "package",
@@ -140,6 +169,20 @@
       "sha512": "sha512-6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
       "path": "newtonsoft.json/12.0.3",
       "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
+    },
+    "RectpackSharp/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-k9TjIxW5tP/Qh06AyTtYRLXdLfkRJkhQ2G/8+ct9Dx1XPMZ+gBgHOVUfdGeW8k0OGePSWOPM0Oz0Bn4KXvLBmQ==",
+      "path": "rectpacksharp/1.1.0",
+      "hashPath": "rectpacksharp.1.1.0.nupkg.sha512"
+    },
+    "System.Memory/4.5.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
+      "path": "system.memory/4.5.4",
+      "hashPath": "system.memory.4.5.4.nupkg.sha512"
     }
   }
 }

@@ -9,8 +9,8 @@
 		}
 		public void GenerateChunk(Chunk chunk)
 		{
-			for(int i=0; i < chunk.tiles.Length; i++) {
-				chunk.tiles[i]=generator.GetTile(chunk.to3D(i).ToGlobalPos(chunk.pos));
+			for(int i=0; i < Chunk.SIZE; i++) {
+				chunk.SetTile(chunk.to3D(i), generator.GetTile(chunk.to3D(i).ToGlobalPos(chunk.pos)));
 			}
 			chunk.isDirty = true;
 		}

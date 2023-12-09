@@ -5,6 +5,7 @@
 	/// </summary>
 	public class ResourceLocation : IEquatable<ResourceLocation>
 	{
+		public const string DEFAULT_NAMESPACE="eternalfrost";
 		public string Namespace { get; }
 		public string ID { get; }
 
@@ -15,10 +16,14 @@
 		}
 		public ResourceLocation(string path)
 		{
-			Namespace = "eternalfrost";
+			Namespace = DEFAULT_NAMESPACE;
 			ID = path;
 		}
-
+		public static ResourceLocation FromString(string a)
+		{
+			var str = a.Split(':');
+			return new ResourceLocation(str[0], str[1]);
+		}
 		public override string ToString()
 		{
 			return $"{Namespace}:{ID}";

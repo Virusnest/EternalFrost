@@ -23,8 +23,18 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE;RELEASE;NET;NET6_0;NETCOREAPP</DefineConstants>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x64</PlatformTarget>
+    <CustomCommands>
+      <CustomCommands>
+        <Command>
+          <type>AfterBuild</type>
+          <command>cp -r Assets ${TargetDir}</command>
+        </Command>
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Icon.ico" />
@@ -42,6 +52,15 @@
     <None Remove="Utils\ClassExtentions\" />
     <None Remove="Assets\" />
     <None Remove="Utils\Collision\" />
+    <None Remove="Utils\TileMap\States\" />
+    <None Remove="Assets\eternalfrost\models\" />
+    <None Remove="Assets\eternalfrost\models\tiles\" />
+    <None Remove="Assets\eternalfrost\models\entities\" />
+    <None Remove="Assets\eternalfrost\textures\items\" />
+    <None Remove="Assets\eternalfrost\models\items\" />
+    <None Remove="Utils\Renderers\ItemDrawers\" />
+    <None Remove="SVKT\" />
+    <None Remove="SVKT\ValueTypes\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
@@ -53,6 +72,7 @@
     <PackageReference Include="MonoGame.Extended" Version="3.8.0" />
     <PackageReference Include="MonoGame.Extended.Particles" Version="3.8.0" />
     <PackageReference Include="RectpackSharp" Version="1.1.0" />
+    <PackageReference Include="PeterO.Cbor" Version="4.5.2" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utils\Collections\" />
@@ -68,6 +88,23 @@
     <Folder Include="Utils\ClassExtentions\" />
     <Folder Include="Assets\" />
     <Folder Include="Utils\Collision\" />
+    <Folder Include="Utils\TileMap\States\" />
+    <Folder Include="Assets\eternalfrost\models\" />
+    <Folder Include="Assets\eternalfrost\models\tiles\" />
+    <Folder Include="Assets\eternalfrost\models\entities\" />
+    <Folder Include="Assets\eternalfrost\textures\items\" />
+    <Folder Include="Assets\eternalfrost\models\items\" />
+    <Folder Include="Utils\Renderers\ItemDrawers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\..\.nuget\packages\monogame.extended\3.8.0\contentFiles\any\netstandard2.0\mgfxc.dll" Condition="Exists('$(NuGetPackageRoot)monogame.extended/3.8.0/contentFiles/any/netstandard2.0/mgfxc.dll')">
+      <NuGetPackageId>MonoGame.Extended</NuGetPackageId>
+      <NuGetPackageVersion>3.8.0</NuGetPackageVersion>
+      <NuGetItemType>Content</NuGetItemType>
+      <Pack>false</Pack>
+      <Private>False</Private>
+      <Link>Utils\TileMap\mgfxc.dll</Link>
+    </Content>
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />

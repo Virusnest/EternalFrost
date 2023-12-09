@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework.Graphics;
-namespace EternalFrost.Utils.TileMap.Tiles
+namespace EternalFrost.Utils.TileMap.Tile
 {
 	public class SnowTile : Tile
 	{

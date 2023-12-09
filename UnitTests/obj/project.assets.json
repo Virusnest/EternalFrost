@@ -463,6 +463,49 @@
           "build/netcoreapp2.1/NUnit3TestAdapter.props": {}
         }
       },
+      "PeterO.Cbor/4.5.2": {
+        "type": "package",
+        "dependencies": {
+          "PeterO.Numbers": "1.8.2",
+          "PeterO.URIUtility": "1.0.0"
+        },
+        "compile": {
+          "lib/netstandard1.0/CBOR.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.0/CBOR.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "PeterO.Numbers/1.8.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/Numbers.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.0/Numbers.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "PeterO.URIUtility/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/URIUtility.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.0/URIUtility.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "RectpackSharp/1.1.0": {
         "type": "package",
         "dependencies": {
@@ -510,6 +553,7 @@
           "MonoGame.Extended": "3.8.0",
           "MonoGame.Extended.Particles": "3.8.0",
           "MonoGame.Framework.DesktopGL": "3.8.1.303",
+          "PeterO.Cbor": "4.5.2",
           "RectpackSharp": "1.1.0"
         },
         "compile": {
@@ -1512,6 +1556,57 @@
         "build/netcoreapp2.1/testcentric.engine.metadata.dll",
         "nunit3testadapter.4.2.1.nupkg.sha512",
         "nunit3testadapter.nuspec"
+      ]
+    },
+    "PeterO.Cbor/4.5.2": {
+      "sha512": "/yiIEuawE2v/DtR8oKit5YgpOSLiWCVo7K0SkHrKVzTqh79nkEa7BgmCZ7siWQkWpO5XY9T0+lVcuuOTuT19ag==",
+      "type": "package",
+      "path": "petero.cbor/4.5.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/CBOR.dll",
+        "lib/net20/CBOR.xml",
+        "lib/net40/CBOR.dll",
+        "lib/net40/CBOR.xml",
+        "lib/netstandard1.0/CBOR.dll",
+        "lib/netstandard1.0/CBOR.xml",
+        "petero.cbor.4.5.2.nupkg.sha512",
+        "petero.cbor.nuspec"
+      ]
+    },
+    "PeterO.Numbers/1.8.2": {
+      "sha512": "d+A5KLoWbwOTpvubPaGXLgCzANE00jXmsT+yneHwLe2OlobBBFLaIHyoDwmekuHM17z9hU++RF6mL+zZ2x69nA==",
+      "type": "package",
+      "path": "petero.numbers/1.8.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/Numbers.dll",
+        "lib/net20/Numbers.xml",
+        "lib/net40/Numbers.dll",
+        "lib/net40/Numbers.xml",
+        "lib/netstandard1.0/Numbers.dll",
+        "lib/netstandard1.0/Numbers.xml",
+        "petero.numbers.1.8.2.nupkg.sha512",
+        "petero.numbers.nuspec"
+      ]
+    },
+    "PeterO.URIUtility/1.0.0": {
+      "sha512": "fpRTBsYACMp7NvTECauYRomubWTC3vUNw4hMXdIedP8ctBGK6tea9HOJwE+qVzis6MZYkL3LIs8qeY3rc6Jdlw==",
+      "type": "package",
+      "path": "petero.uriutility/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/URIUtility.dll",
+        "lib/net20/URIUtility.xml",
+        "lib/net40/URIUtility.dll",
+        "lib/net40/URIUtility.xml",
+        "lib/netstandard1.0/URIUtility.dll",
+        "lib/netstandard1.0/URIUtility.xml",
+        "petero.uriutility.1.0.0.nupkg.sha512",
+        "petero.uriutility.nuspec"
       ]
     },
     "RectpackSharp/1.1.0": {

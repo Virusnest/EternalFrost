@@ -1,5 +1,6 @@
 ﻿using MonoGame.Extended;
 using EternalFrost.Types;
+using EternalFrost.Utils.TileMap.Tile;
 
 namespace EternalFrost.Utils.TileMap
 {
@@ -12,9 +13,21 @@ namespace EternalFrost.Utils.TileMap
 			for (int x = 0; x < Chunk.WIDTH; x++) {
 				for (int y = 0; y < Chunk.HEIGHT; y++) {
 					var pos = new TilePos(x, y, layer).ToGlobalPos(chunk.pos);
-					if (chunk.GetTile(x, y,layer) != null) {
-						batch.Draw(EternalFrost.tileAtlas.atlas, pos.ToWorldVec()+new Vector2(4,4), EternalFrost.tileAtlas.textures[chunk.GetTile(x,y,layer).registryItem.getLocation().WithPrefixID("textures/").WithSuffix(".png")].Bounds,Color.White,MathHelper.ToRadians(pos.ToWorldVec().GetHashCode()%90*45),new Vector2(4,4),Vector2.One,SpriteEffects.None,1);
+					if (chunk.GetTile(x, y,layer).tile!=Tiles.EMPTY) {
+						TileSprite sprite = TileSprite.ConvertSpriteToTileSprite(EternalFrost.tileAtlas.GetSprite(chunk.GetTile(x, y, layer).registryItem.getLocation().WithPrefixID("textures/").WithSuffix(".png")));
+						var rec = sprite.Bounds;
+						rec.Width = sprite.TileSpriteBounds.Width;
+						rec.Height = sprite.TileSpriteBounds.Height;
+						//Console.WriteLine((byte)pos.GetHashedPos() % sprite.Variations);
+						rec.X+=(sprite.TileSpriteBounds.Width*((byte)pos.GetHashedPos()%sprite.Variations));
+						batch.Draw(sprite.Texture, pos.ToWorldVec()+new Vector2(4,4),
+							rec,
+							Color.White,
+							sprite.Rotates ? MathHelper.ToRadians((pos.GetHashedPos()%4)*90) : 0,
+							new Vector2(4,4),Vector2.One,SpriteEffects.None,layer);
+						
 					}
+
 				}  
 			}
 #if DEBUG

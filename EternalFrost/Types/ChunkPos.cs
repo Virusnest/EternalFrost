@@ -22,10 +22,11 @@ namespace EternalFrost.Types
 		}
 		public Vector2 AsWorldVec()
 		{
-			return new Vector2(X * ChunkRenderer.TILESIZE*Chunk.WIDTH, Y * ChunkRenderer.TILESIZE * Chunk.HEIGHT);
+			return new Vector2((int)((long)X * ChunkRenderer.TILESIZE*  Chunk.WIDTH), (int)((long)Y * ChunkRenderer.TILESIZE * Chunk.HEIGHT));
 		}
 		public TilePos ToTilePos(int layer)
 		{
+			
 			return new TilePos(X * Chunk.WIDTH, Y * Chunk.WIDTH, layer);
 		}
 

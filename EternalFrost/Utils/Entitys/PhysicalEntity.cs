@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using EternalFrost.Collision;
-using EternalFrost.Input;
 using EternalFrost.Types;
 using EternalFrost.Utils.ClassExtentions;
 using EternalFrost.Utils.TileMap;
+using EternalFrost.Utils.TileMap.Tile;
 using MonoGame.Extended;
 
 namespace EternalFrost.Utils.Entitys
@@ -15,9 +15,7 @@ namespace EternalFrost.Utils.Entitys
 		public RectangleF CollisionBox;
 		public Vector2 Velocity = Vector2.Zero;
 		public bool isPhysical = true;
-		private bool hasCollided = false;
 		public bool isOnGround = false;
-		private bool groundnextframe = false;
 		public bool HasGravity = true;
 		public RectangleF BBB;
 		public float Mass=1;
@@ -25,12 +23,10 @@ namespace EternalFrost.Utils.Entitys
 		public float AirFriction = 0.01f;
 		public Vector2 Acceleration;
 		public float friction;
-		private bool Colliding=false;
-		RectangleF slideBox = new RectangleF(0,0,6,16);
-		public PhysicalEntity(Vector2 position) : base(position)
+		public PhysicalEntity(Vector2 position, World world) : base(position, world)
 		{
 			Velocity = Vector2.Zero;
-			CollisionBox = new RectangleF(1, 0, 6, 16);
+			CollisionBox = new RectangleF(1, 1, 6, 15f);
 			BBB = new RectangleF();
 		}
 		public RectangleF WorldCollider()
@@ -72,15 +68,17 @@ namespace EternalFrost.Utils.Entitys
 			// Apply the air resistance force
 			AddForce(airResistance);
 		}
-		public void UpdateMovement(World world)
+		public void UpdateMovement()
 		{
 
 			if (isPhysical) {
-				UpdateCollision(world);
+				UpdateCollision(World);
 			}
 			Position += Velocity;
-			if (world.GetTile(getTilePos() + new TilePos(0, 1, 0)) != null)
-				Velocity.X *= world.GetTile(getTilePos() + new TilePos(0, 1, 0)).Properties.Frition;
+			if (HasGravity) { Velocity.Y += GRAVITY; }
+			if (World.GetTile(getTilePos() + new TilePos(0, 1, 0)) != null)
+				if (World.GetTile(getTilePos() + new TilePos(0, 1, 0)).tile!=Tiles.EMPTY)
+					Velocity.X *= World.GetTile(getTilePos() + new TilePos(0, 1, 0)).Properties.Frition;
 			//else
 			ApplyAirResistance();
 			//Velocity *= AirFriction;
@@ -105,7 +103,7 @@ namespace EternalFrost.Utils.Entitys
 				for (int x = (int)MathF.Floor(BBB.Left / ChunkRenderer.TILESIZE); x < (int)MathF.Ceiling(BBB.Right / ChunkRenderer.TILESIZE); x++) {
 					for (int y = (int)MathF.Floor(BBB.Top / ChunkRenderer.TILESIZE); y < (int)MathF.Ceiling(BBB.Bottom / ChunkRenderer.TILESIZE); y++) {
 						var pos = new TilePos(x, y, 1);
-						if (world.GetTile(pos) == null) continue;
+						if (world.GetTile(pos)==null||(world.GetTile(pos).tile == Tiles.EMPTY)) continue;
 						var plat = new RectangleF(pos.ToWorldVec().X, pos.ToWorldVec().Y, 8, 8);
 						var col = Collisions.SweptAABB(WorldCollider(), plat, Velocity);
 						if (col.Normal == Vector2.Zero) continue;
@@ -134,21 +132,7 @@ namespace EternalFrost.Utils.Entitys
 			//
 
 		}
-		public override void Render(SpriteBatch batch)
-		{
-			base.Render(batch);
-			for (int x = (int)MathF.Floor(BBB.Left / ChunkRenderer.TILESIZE); x < (int)MathF.Ceiling(BBB.Right / ChunkRenderer.TILESIZE); x++) {
-				for (int y = (int)MathF.Floor(BBB.Top / ChunkRenderer.TILESIZE); y < (int)MathF.Ceiling(BBB.Bottom / ChunkRenderer.TILESIZE); y++) {
-					var pos = new TilePos(x, y, 1);
-					var plat = new RectangleF(pos.ToWorldVec().X, pos.ToWorldVec().Y, 8, 8);
-					//batch.DrawRectangle(plat, Color.Black);
-				}
-			}
-			
-			batch.DrawRectangle(WorldCollider(), Color.White);
-			batch.DrawRectangle(WorldColliderPredict(), Color.White);
-			batch.DrawLine(Vector2.Zero, 100, EternalFrost.camera.ScreenToWorld(Mouse.GetState().Position.ToVector2()).ToAngle(), Color.Red);
-		}
+
 		protected virtual void OnCollide()
 		{
 

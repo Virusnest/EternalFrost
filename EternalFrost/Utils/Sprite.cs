@@ -1,37 +1,22 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using EternalFrost.Registry;
+﻿using EternalFrost.Registry;
 
 namespace EternalFrost.Utils
 {
 	public class Sprite
 	{
-		public ResourceLocation AtlasTexture;
-		public int Framerate;
+		public ResourceLocation TextureLocation;
 		public Rectangle Bounds;
-		public bool Animated = false;
 		public Texture2D Texture;
-		public KeyedCollection<ResourceLocation,Animation> Animations;
-		public ResourceLocation CurrentAnimation;
-		public Sprite(Rectangle bounds)
+		public Sprite(ResourceLocation location)
 		{
-			Bounds = bounds;
+			TextureLocation = location;
 		}
-		
-	}
-	public class Animation
-	{
-		public ResourceLocation ID;
-		public int frame;
-		public int Frames;
-		public bool animDir;
-		public Animation()
+		public Sprite(ResourceLocation location,Texture2D texture)
 		{
+			TextureLocation = location;
+			Texture = texture;
+		}
+	}
 
-		}
-		
-	}
 }
 

@@ -113,3 +113,5 @@
 /Users/25kmaloney/Projects/EternalFrost/UnitTests/obj/Release/net6.0/UnitTests.pdb
 /Users/25kmaloney/Projects/EternalFrost/UnitTests/obj/Release/net6.0/UnitTests.genruntimeconfig.cache
 /Users/25kmaloney/Projects/EternalFrost/UnitTests/obj/Release/net6.0/ref/UnitTests.dll
+/Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Release/net6.0/Microsoft.Bcl.HashCode.dll
+/Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Release/net6.0/RectpackSharp.dll

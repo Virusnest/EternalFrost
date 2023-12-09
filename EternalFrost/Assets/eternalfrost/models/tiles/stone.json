@@ -1,0 +1,14 @@
+﻿{
+  "Texture": "eternalfrost:textures/tiles/stone.png",
+  "Size": {
+    "w": 8,
+    "h": 8
+  },
+  "Rotates": false,
+  "Variations": 4,
+  "Connects": true,
+  "Animation": {
+    "FPS": 5,
+    "Frames": 5
+  }
+}

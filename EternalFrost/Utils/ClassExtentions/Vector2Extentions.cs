@@ -7,7 +7,7 @@ namespace EternalFrost.Utils.ClassExtentions
 	{
 		public static TilePos ToTilePos(this Vector2 vec,int z)
 		{
-			return new TilePos((int)MathF.Floor(vec.X/ChunkRenderer.TILESIZE), (int)MathF.Floor(vec.Y / ChunkRenderer.TILESIZE ), z);
+			return new TilePos((int)Math.Floor(vec.X/ChunkRenderer.TILESIZE), (int)Math.Floor(vec.Y / ChunkRenderer.TILESIZE ), z);
 		}
 	}
 }

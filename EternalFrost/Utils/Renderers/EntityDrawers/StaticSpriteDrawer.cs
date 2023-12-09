@@ -14,7 +14,7 @@ namespace EternalFrost.Utils.Renderers.EntityDrawers
 		}
 		public override void Draw(SpriteBatch batch,RenderingEntity entity)
 		{
-			batch.Draw(EternalFrost.tileAtlas.atlas,entity.Position,Sprite.Bounds,Color.White);
+			batch.Draw(Sprite.Texture,entity.Position,Sprite.Bounds,Color.White);
 		}
 	}
 }

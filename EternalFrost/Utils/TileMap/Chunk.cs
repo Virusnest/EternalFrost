@@ -3,6 +3,8 @@ using MonoGame.Extended.Collections;
 using EternalFrost.InGameTypes;
 using EternalFrost.Types;
 using EternalFrost.Utils.Entitys;
+using EternalFrost.Collections;
+using EternalFrost.Utils.TileMap.Tile;
 
 namespace EternalFrost.Utils.TileMap
 {
@@ -13,21 +15,22 @@ namespace EternalFrost.Utils.TileMap
 		public const int WIDTH=16;
 		public const int HEIGHT=16;
 		public const int DEPTH=3;
-		public WorldTile[] tiles { get; set; }
+		public const int SIZE = WIDTH * HEIGHT*DEPTH;
+		public PaletteCollection<WorldTile> tiles { get; set; }
 		public bool isDirty = false;
 
 		public Chunk(ChunkPos pos)
 		{
 			this.pos = pos;
-			tiles = new WorldTile[WIDTH*HEIGHT*DEPTH];
+			tiles = new PaletteCollection<WorldTile>(new WorldTile(Tiles.EMPTY),WIDTH*HEIGHT*DEPTH);
 			entities = new KeyedCollection<Guid, Entity>(e => e.Guid);
 		}
 		public WorldTile GetTile(int x, int y,int z) {
-			return tiles[to1D(x,y,z)];
+			return tiles.Get(to1D(x,y,z));
 		}
 		public WorldTile GetTile(TilePos pos)
 		{
-			return tiles[to1D(pos.X, pos.Y, pos.Z)];
+			return tiles.Get(to1D(pos.X, pos.Y, pos.Z));
 		}
 		public TilePos to3D(int idx)
 		{
@@ -45,7 +48,7 @@ namespace EternalFrost.Utils.TileMap
 		public void SetTile(int x, int y,int z, WorldTile tile)
 		{
 			if((x<=WIDTH-1) && (x >= 0) && (y<=HEIGHT-1) && (y>=0))
-				tiles[to1D(x, y, z)] = tile;
+				tiles.Set(to1D(x, y, z),tile);
 		}
 		public void SetTile(System.Drawing.Point pos, int z, WorldTile tile)
 		{
@@ -59,7 +62,7 @@ namespace EternalFrost.Utils.TileMap
 		{
 			for (int x = 0; x < WIDTH; x++) {
 				for (int y = 0; y < HEIGHT; y++) {
-					SetTile(x, y, 1,new WorldTile(Tiles.Tiles.ICE));
+					SetTile(x, y, 1,new WorldTile(Tile.Tiles.ICE));
 				}
 			}
 		}

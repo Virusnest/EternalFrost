@@ -1,4 +1,5 @@
 ﻿using EternalFrost.Utils.TileMap;
+using MonoGame.Extended;
 
 namespace EternalFrost.Types
 {
@@ -25,8 +26,14 @@ namespace EternalFrost.Types
 		{
 			return X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode();
 		}
+		public int GetHashedPos()
+		{
+			long l = (X * 39037871) ^ Z * 13486921L ^ Y;
+			l = l * l * 1208897L + l * 16L;
+			return (int)l >> 16;
+		}
 		public Vector2 ToWorldVec() {
-			return new Vector2(X*ChunkRenderer.TILESIZE, Y * ChunkRenderer.TILESIZE);
+			return new Vector2((int)((long)X *ChunkRenderer.TILESIZE), (int)((long)Y * ChunkRenderer.TILESIZE));
 		}
 		public TilePos ToChunkLocal()
 		{
@@ -72,7 +79,7 @@ namespace EternalFrost.Types
 			return new TilePos(X+(pos.X*Chunk.WIDTH),Y+(pos.Y*Chunk.HEIGHT),Z);
 		}
 		public ChunkPos ToChunkPos() {
-			return new ChunkPos((int)Math.Floor((float)X/Chunk.WIDTH), (int)Math.Floor((float)Y /Chunk.HEIGHT));
+			return new ChunkPos((int)Math.Floor((double)X/(double)Chunk.WIDTH), (int)Math.Floor((double)Y / (double)Chunk.HEIGHT));
 		}
 
 	}
