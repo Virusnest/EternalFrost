@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OhsjiY58Zo0EW2XK+5TBv43kZyTfXztNmvsvPC9FvFyBBH5L7n0QEjf/saQrCyoB65mD0WKYs5cqyFlQuI7hYg==",
+  "dgSpecHash": "MUT38BVD1iM8Vd23/DGn902p5KkDF2EjTwg+8sYZw1DBfCn3bHwHVQU6xlD9UkwNacLIYjn+c1DLow3QQp2dGw==",
   "success": true,
   "projectFilePath": "/Users/25kmaloney/Projects/EternalFrost/UnitTests/UnitTests.csproj",
   "expectedPackageFiles": [
@@ -21,10 +21,10 @@
     "/Users/25kmaloney/.nuget/packages/nunit/3.13.3/nunit.3.13.3.nupkg.sha512",
     "/Users/25kmaloney/.nuget/packages/nunit.analyzers/3.3.0/nunit.analyzers.3.3.0.nupkg.sha512",
     "/Users/25kmaloney/.nuget/packages/nunit3testadapter/4.2.1/nunit3testadapter.4.2.1.nupkg.sha512",
-    "/Users/25kmaloney/.nuget/packages/petero.cbor/4.5.2/petero.cbor.4.5.2.nupkg.sha512",
+    "/Users/25kmaloney/.nuget/packages/petero.cbor/4.5.3/petero.cbor.4.5.3.nupkg.sha512",
     "/Users/25kmaloney/.nuget/packages/petero.numbers/1.8.2/petero.numbers.1.8.2.nupkg.sha512",
     "/Users/25kmaloney/.nuget/packages/petero.uriutility/1.0.0/petero.uriutility.1.0.0.nupkg.sha512",
-    "/Users/25kmaloney/.nuget/packages/rectpacksharp/1.1.0/rectpacksharp.1.1.0.nupkg.sha512",
+    "/Users/25kmaloney/.nuget/packages/rectpacksharp/1.2.0/rectpacksharp.1.2.0.nupkg.sha512",
     "/Users/25kmaloney/.nuget/packages/system.memory/4.5.4/system.memory.4.5.4.nupkg.sha512",
     "/Users/25kmaloney/.nuget/packages/system.reflection.metadata/1.6.0/system.reflection.metadata.1.6.0.nupkg.sha512"
   ],

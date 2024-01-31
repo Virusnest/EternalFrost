@@ -56,11 +56,11 @@
             },
             "PeterO.Cbor": {
               "target": "Package",
-              "version": "[4.5.2, )"
+              "version": "[4.5.3, )"
             },
             "RectpackSharp": {
               "target": "Package",
-              "version": "[1.1.0, )"
+              "version": "[1.2.0, )"
             }
           },
           "imports": [

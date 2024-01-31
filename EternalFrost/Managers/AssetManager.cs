@@ -24,6 +24,9 @@ namespace EternalFrost.Managers
 			loadItems();
 			loadTiles();
 			loadEntities();
+			Console.WriteLine(Effects.TILE);
+			loadEffects();
+			
 		}
 		public static void AtlasTextures()
 		{
@@ -82,6 +85,17 @@ namespace EternalFrost.Managers
 					ToBeAtlased.Add(sprite);
 				} catch {
 					Console.WriteLine(entry.getLocation().WithPrefixID("models/").WithSuffix(".json").getLocation() + " Missing");
+				}
+			}
+		}
+		public static void loadEffects()
+		{
+			foreach (RegistryItem entry in Registries.EFFECT_REG.Keys()) {
+				try {
+					byte[] data = File.ReadAllBytes(Path.Combine(AssetDir, entry.getLocation().WithSuffix(".mgfx").getLocation()));
+					Registries.EFFECT_REG.GetValue(entry.Value).type = new Effect(EternalFrost._graphics.GraphicsDevice, data);
+				} catch {
+					Console.WriteLine(entry.getLocation().WithSuffix(".mgfx").getLocation() + " Missing, Have you forgot to compile your shader?");
 				}
 			}
 		}

@@ -29,7 +29,7 @@ namespace EternalFrost.Collections
 		{
 			WorldItem item = ItemsList[index];
 			if (item == null)
-				return new WorldItem(Items.EMPTY,1);
+				return item;
 			if (item.Count <= count) {
 				ItemsList.Remove(item);
 				return item;

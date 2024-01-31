@@ -61,6 +61,10 @@
     <None Remove="Utils\Renderers\ItemDrawers\" />
     <None Remove="SVKT\" />
     <None Remove="SVKT\ValueTypes\" />
+    <None Remove="GUI\" />
+    <None Remove="GUI\Widgits\" />
+    <None Remove="GUI\Screens\" />
+    <None Remove="Assets\eternalfrost\effects\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
@@ -71,8 +75,8 @@
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
     <PackageReference Include="MonoGame.Extended" Version="3.8.0" />
     <PackageReference Include="MonoGame.Extended.Particles" Version="3.8.0" />
-    <PackageReference Include="RectpackSharp" Version="1.1.0" />
-    <PackageReference Include="PeterO.Cbor" Version="4.5.2" />
+    <PackageReference Include="RectpackSharp" Version="1.2.0" />
+    <PackageReference Include="PeterO.Cbor" Version="4.5.3" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utils\Collections\" />
@@ -95,6 +99,10 @@
     <Folder Include="Assets\eternalfrost\textures\items\" />
     <Folder Include="Assets\eternalfrost\models\items\" />
     <Folder Include="Utils\Renderers\ItemDrawers\" />
+    <Folder Include="GUI\" />
+    <Folder Include="GUI\Widgits\" />
+    <Folder Include="GUI\Screens\" />
+    <Folder Include="Assets\eternalfrost\effects\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\..\..\.nuget\packages\monogame.extended\3.8.0\contentFiles\any\netstandard2.0\mgfxc.dll" Condition="Exists('$(NuGetPackageRoot)monogame.extended/3.8.0/contentFiles/any/netstandard2.0/mgfxc.dll')">

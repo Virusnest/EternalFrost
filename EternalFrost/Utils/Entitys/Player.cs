@@ -6,6 +6,7 @@ using EternalFrost.Item;
 using EternalFrost.Entitys;
 using EternalFrost.Registry;
 using EternalFrost.Utils.TileMap;
+using EternalFrost.Managers;
 
 namespace EternalFrost.Utils.Entitys
 {
@@ -29,8 +30,9 @@ namespace EternalFrost.Utils.Entitys
 			if (Keyboard.GetState().IsKeyDown(Keybinds.DROP.Bind)) {
 				var item = Inventory.Drop(0, 1);
 				if (item != null) {
-					EternalFrost.manager.world.SafeSpawnEntity(new ItemEntity(Position,World, item));
+					WorldManager.world.SafeSpawnEntity(new ItemEntity(Position,World, item));
 					if (item.Item != Items.EMPTY) {
+						
 					}
 				}
 				//Console.WriteLine(Inventory.Items[0].count);

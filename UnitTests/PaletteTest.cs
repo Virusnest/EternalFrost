@@ -17,7 +17,6 @@ namespace UnitTests
 		[Test]
 		public void SwapVal()
 		{
-			List<string> l = new List<string>(3);
 			//Tests.palette.Set(1, "balls");
 			Tests.palette.Set(1, "");
 			Assert.IsFalse(Tests.palette.Data.Palette[1]== Tests.palette.Data.Palette[0]);

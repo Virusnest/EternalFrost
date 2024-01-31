@@ -463,7 +463,7 @@
           "build/netcoreapp2.1/NUnit3TestAdapter.props": {}
         }
       },
-      "PeterO.Cbor/4.5.2": {
+      "PeterO.Cbor/4.5.3": {
         "type": "package",
         "dependencies": {
           "PeterO.Numbers": "1.8.2",
@@ -506,19 +506,19 @@
           }
         }
       },
-      "RectpackSharp/1.1.0": {
+      "RectpackSharp/1.2.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.Bcl.HashCode": "1.1.1",
           "System.Memory": "4.5.4"
         },
         "compile": {
-          "lib/netstandard2.0/RectpackSharp.dll": {
+          "lib/net5.0/RectpackSharp.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/netstandard2.0/RectpackSharp.dll": {
+          "lib/net5.0/RectpackSharp.dll": {
             "related": ".xml"
           }
         }
@@ -553,8 +553,8 @@
           "MonoGame.Extended": "3.8.0",
           "MonoGame.Extended.Particles": "3.8.0",
           "MonoGame.Framework.DesktopGL": "3.8.1.303",
-          "PeterO.Cbor": "4.5.2",
-          "RectpackSharp": "1.1.0"
+          "PeterO.Cbor": "4.5.3",
+          "RectpackSharp": "1.2.0"
         },
         "compile": {
           "bin/placeholder/EternalFrost.dll": {}
@@ -1558,10 +1558,10 @@
         "nunit3testadapter.nuspec"
       ]
     },
-    "PeterO.Cbor/4.5.2": {
-      "sha512": "/yiIEuawE2v/DtR8oKit5YgpOSLiWCVo7K0SkHrKVzTqh79nkEa7BgmCZ7siWQkWpO5XY9T0+lVcuuOTuT19ag==",
+    "PeterO.Cbor/4.5.3": {
+      "sha512": "YJDqWlXbLMzYXSOIHy8/U/zU3DGV0Kb6cUqyoB12hNIsPQvGmYlaR7u4LbQmc3kvJuLdX6LtYshjp5rynyQ8jA==",
       "type": "package",
-      "path": "petero.cbor/4.5.2",
+      "path": "petero.cbor/4.5.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1571,7 +1571,7 @@
         "lib/net40/CBOR.xml",
         "lib/netstandard1.0/CBOR.dll",
         "lib/netstandard1.0/CBOR.xml",
-        "petero.cbor.4.5.2.nupkg.sha512",
+        "petero.cbor.4.5.3.nupkg.sha512",
         "petero.cbor.nuspec"
       ]
     },
@@ -1609,19 +1609,21 @@
         "petero.uriutility.nuspec"
       ]
     },
-    "RectpackSharp/1.1.0": {
-      "sha512": "k9TjIxW5tP/Qh06AyTtYRLXdLfkRJkhQ2G/8+ct9Dx1XPMZ+gBgHOVUfdGeW8k0OGePSWOPM0Oz0Bn4KXvLBmQ==",
+    "RectpackSharp/1.2.0": {
+      "sha512": "uLgPjEZebK5Eyhvy3xlbsa2GC+3ML6j2m69ugbNYLH7folQcGckYJQwvcne6Huu6p+jsKNMd0JIqD60iUcqbrQ==",
       "type": "package",
-      "path": "rectpacksharp/1.1.0",
+      "path": "rectpacksharp/1.2.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
         "README.md",
+        "lib/net5.0/RectpackSharp.dll",
+        "lib/net5.0/RectpackSharp.xml",
         "lib/netstandard2.0/RectpackSharp.dll",
         "lib/netstandard2.0/RectpackSharp.xml",
         "packsharp-logo.png",
-        "rectpacksharp.1.1.0.nupkg.sha512",
+        "rectpacksharp.1.2.0.nupkg.sha512",
         "rectpacksharp.nuspec"
       ]
     },

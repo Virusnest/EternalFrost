@@ -1,0 +1,14 @@
+﻿{
+	"Texture": "eternalfrost:textures/tiles/colon3.png",
+	"Size": {
+		"w": 8,
+		"h": 8
+	},
+	"Rotates": false,
+	"Variations": 1,
+	"Connects": true,
+	"Animation": {
+		"FPS": 1,
+		"Frames": 1
+	}
+}

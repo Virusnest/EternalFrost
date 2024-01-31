@@ -2,13 +2,14 @@
 using EternalFrost.States;
 using EternalFrost.Utils.TileMap.Tile;
 using Newtonsoft.Json.Linq;
+using PeterO.Cbor;
 
 namespace EternalFrost.InGameTypes
 {
 	public class WorldTile : IEquatable<WorldTile>
 	{
 		public Tile tile { get; }
-		public byte StateBitmask;
+		public ByteData StateBitmask;
 		public RegistryItem registryItem { get; }
 		public TileProperties Properties { get; }
 
@@ -31,9 +32,17 @@ namespace EternalFrost.InGameTypes
 		{
 			return ReferenceEquals(other.tile,tile);
 		}
+		public CBORObject ToCBORObject()
+		{
+			return CBORObject.NewMap().Add("ID",registryItem.Value.ToString()).Add("data",StateBitmask.Data);
+		}
 	}
 	public struct ByteData {
 		public byte Data { get; private set; }
+		public ByteData(byte data)
+		{
+			Data = data;
+		}
 		public byte GetNibble()
 		{
 			return (byte)(Data >> 4);

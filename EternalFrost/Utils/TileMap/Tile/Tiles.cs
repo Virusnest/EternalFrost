@@ -9,6 +9,8 @@ namespace EternalFrost.Utils.TileMap.Tile
 			Solid = true
 		}));
 		public static Tile SNOW = Register("snow", new SnowTile(new TileProperties()));
+		public static Tile COLON3 = Register("colon3", new SnowTile(new TileProperties()));
+
 		public static Tile STONE = Register("stone", new SnowTile(new TileProperties()));
 
 		public static Tile SNOWY_ICE = Register("snowy_ice", new SnowTile(new TileProperties()));
@@ -16,6 +18,7 @@ namespace EternalFrost.Utils.TileMap.Tile
 		private static Tile Register(string id, Tile tile)
 		{
 			return Registry.Registries.TILE_REG.Register(new Registry.ResourceLocation(id), tile);
+			
 		} 
 	}
 }

@@ -13,28 +13,25 @@ using MonoGame.Extended;
 
 namespace EternalFrost.Managers
 {
-	public class WorldManager
+	public static class WorldManager
 	{
-		public World world;
-		ChunkGenerator generator;
-		public WorldRenderer renderer;
-		public Player player;
+		public static World world;
+		static ChunkGenerator generator;
+		public static WorldRenderer renderer;
+		public static Player player;
 		
-		public WorldManager()
-		{
-			world = new World();
-			generator = new ChunkGenerator(new SinGenerator(new WorldTile(Tiles.ICE)));
-			renderer = new WorldRenderer();
-		}
-		public void Generate(Chunk o)
+		public static void Generate(Chunk o)
 		{
 			if (!o.isDirty) {
 				generator.GenerateChunk(o);
 			}
 		}
-		public void Init()
+		public static void Init()
 		{
-			var pos = new TilePos(1000,0,1);
+			world = new World();
+			generator = new ChunkGenerator(new FillGenerator(new WorldTile(Tiles.STONE)));
+			renderer = new WorldRenderer();
+			var pos = new TilePos(10,0,1);
 			player = new Player( pos.ToWorldVec(),world);
 			Console.WriteLine(pos.ToChunkPos().AsWorldVec());
 			Console.WriteLine(pos.ToWorldVec());
@@ -42,7 +39,7 @@ namespace EternalFrost.Managers
 			chunk.entities.Add(player);
 			world.chunks.Add(chunk);
 		}
-		public void Update(OrthographicCamera camera,GameTime time)
+		public static void Update(OrthographicCamera camera,GameTime time)
 		{
 			var BL = Vector2.Round(((Vector2)camera.BoundingRectangle.BottomLeft)/ChunkRenderer.TILESIZE / Chunk.WIDTH);
 			var TR = Vector2.Round(((Vector2)camera.BoundingRectangle.TopRight)/ ChunkRenderer.TILESIZE / Chunk.WIDTH);
@@ -85,7 +82,7 @@ namespace EternalFrost.Managers
 			}
 			world.SpawnQueue.Clear();
 		}
-		public void Render(SpriteBatch spriteBatch, Matrix viewMatrix)
+		public static void Render(SpriteBatch spriteBatch, Matrix viewMatrix)
 		{
 			renderer.Render(spriteBatch, viewMatrix, world);
 		}

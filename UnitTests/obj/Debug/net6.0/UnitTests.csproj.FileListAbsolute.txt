@@ -118,3 +118,7 @@
 /Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Debug/net6.0/CBOR.dll
 /Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Debug/net6.0/Numbers.dll
 /Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Debug/net6.0/URIUtility.dll
+/Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Debug/net6.0/Content/font/eternalfrost/font.xnb
+/Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Debug/net6.0/Content/texture/eternalfrost/tiles/ice.xnb
+/Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Debug/net6.0/Content/texture/eternalfrost/tiles/snow.xnb
+/Users/25kmaloney/Projects/EternalFrost/UnitTests/bin/Debug/net6.0/Content/texture/eternalfrost/tiles/snowy_ice.xnb
