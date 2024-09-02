@@ -1,11 +1,11 @@
 ﻿
 namespace EternalFrost.Utils.Renderers
 {
-	public class DebugRenderer
-	{
-		public DebugRenderer()
-		{
-		}
-	}
+  public class DebugRenderer
+  {
+    public DebugRenderer()
+    {
+    }
+  }
 }
 

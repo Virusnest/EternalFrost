@@ -5,12 +5,12 @@ using EternalFrost.Utils.TileMap;
 
 namespace EternalFrost.Utils.Entitys
 {
-	public class BasicSpriteEntity:PhysicalEntity
-	{
-		public BasicSpriteEntity(Vector2 pos, World world) : base(pos, world)
-		{
-		}
+  public class BasicSpriteEntity : PhysicalEntity
+  {
+    public BasicSpriteEntity(Vector2 pos, World world) : base(pos, world)
+    {
+    }
 
-	}
+  }
 }
 

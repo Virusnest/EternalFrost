@@ -1,11 +1,11 @@
 ﻿using System;
 namespace EternalFrost.Managers
 {
-	public class EntityManager
-	{
-		public EntityManager()
-		{
-		}
-	}
+  public class EntityManager
+  {
+    public EntityManager()
+    {
+    }
+  }
 }
 

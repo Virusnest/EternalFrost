@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/25kmaloney/Projects/EternalFrost/UnitTests/UnitTests.csproj": {}
+    "/home/virusnest/Projects/EternalFrost/UnitTests/UnitTests.csproj": {}
   },
   "projects": {
-    "/Users/25kmaloney/Projects/EternalFrost/EternalFrost/EternalFrost.csproj": {
+    "/home/virusnest/Projects/EternalFrost/EternalFrost/EternalFrost.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/25kmaloney/Projects/EternalFrost/EternalFrost/EternalFrost.csproj",
+        "projectUniqueName": "/home/virusnest/Projects/EternalFrost/EternalFrost/EternalFrost.csproj",
         "projectName": "EternalFrost",
-        "projectPath": "/Users/25kmaloney/Projects/EternalFrost/EternalFrost/EternalFrost.csproj",
-        "packagesPath": "/Users/25kmaloney/.nuget/packages/",
-        "outputPath": "/Users/25kmaloney/Projects/EternalFrost/EternalFrost/obj/",
+        "projectPath": "/home/virusnest/Projects/EternalFrost/EternalFrost/EternalFrost.csproj",
+        "packagesPath": "/home/virusnest/.nuget/packages/",
+        "outputPath": "/home/virusnest/Projects/EternalFrost/EternalFrost/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/25kmaloney/.nuget/NuGet/NuGet.Config"
+          "/home/virusnest/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -74,26 +74,36 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.32, 6.0.32]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.linux-x64",
+              "version": "[6.0.32, 6.0.32]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.408/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.107/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/25kmaloney/Projects/EternalFrost/UnitTests/UnitTests.csproj": {
+    "/home/virusnest/Projects/EternalFrost/UnitTests/UnitTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/25kmaloney/Projects/EternalFrost/UnitTests/UnitTests.csproj",
+        "projectUniqueName": "/home/virusnest/Projects/EternalFrost/UnitTests/UnitTests.csproj",
         "projectName": "UnitTests",
-        "projectPath": "/Users/25kmaloney/Projects/EternalFrost/UnitTests/UnitTests.csproj",
-        "packagesPath": "/Users/25kmaloney/.nuget/packages/",
-        "outputPath": "/Users/25kmaloney/Projects/EternalFrost/UnitTests/obj/",
+        "projectPath": "/home/virusnest/Projects/EternalFrost/UnitTests/UnitTests.csproj",
+        "packagesPath": "/home/virusnest/.nuget/packages/",
+        "outputPath": "/home/virusnest/Projects/EternalFrost/UnitTests/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/25kmaloney/.nuget/NuGet/NuGet.Config"
+          "/home/virusnest/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -105,8 +115,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/Users/25kmaloney/Projects/EternalFrost/EternalFrost/EternalFrost.csproj": {
-                "projectPath": "/Users/25kmaloney/Projects/EternalFrost/EternalFrost/EternalFrost.csproj"
+              "/home/virusnest/Projects/EternalFrost/EternalFrost/EternalFrost.csproj": {
+                "projectPath": "/home/virusnest/Projects/EternalFrost/EternalFrost/EternalFrost.csproj"
               }
             }
           }
@@ -153,12 +163,18 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.32, 6.0.32]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.408/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.107/RuntimeIdentifierGraph.json"
         }
       }
     }

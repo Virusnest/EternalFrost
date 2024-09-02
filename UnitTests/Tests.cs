@@ -7,21 +7,21 @@ namespace UnitTests;
 public class Tests
 {
   public static Registry<string> registry = new Registry<string>(new ResourceLocation("testreg"));
-	public static PaletteCollection<string> palette = new PaletteCollection<string>("",5);
-	public static ByteData data = new ByteData();
+  public static PaletteCollection<string> palette = new PaletteCollection<string>("", 5);
+  public static ByteData data = new ByteData();
 
-	public static string element = "reststore";
+  public static string element = "reststore";
 
-	[OneTimeSetUp]
-	public void Setup()
-	{
-		registry.Register(new ResourceLocation("testelement"), element);
+  [OneTimeSetUp]
+  public void Setup()
+  {
+    registry.Register(new ResourceLocation("testelement"), element);
 
-	}
+  }
 
-	[OneTimeTearDown]
-	public void Teardown()
-	{
+  [OneTimeTearDown]
+  public void Teardown()
+  {
 
-	}
+  }
 }

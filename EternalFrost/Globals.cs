@@ -7,10 +7,10 @@ global using Microsoft.Xna.Framework.Content;
 global using Microsoft.Xna.Framework.Media;
 namespace EternalFrost
 {
-	public static class Globals
-	{
-		public static float XVel=0;
+  public static class Globals
+  {
+    public static float XVel = 0;
 
-	}
+  }
 }
 
